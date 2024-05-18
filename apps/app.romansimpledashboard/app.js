@@ -151,7 +151,7 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
      * Add any content that will be static here
      */
 
-    created: function() {
+    created: function () {
 
         // let's build our interface
 
@@ -161,7 +161,7 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
 
         // 2) create a name label that shows the name of the selected section
 
-		this.unitLabel = $("<span id=\"unitLabel\"/>").appendTo(this.canvas);
+        this.unitLabel = $("<span id=\"unitLabel\"/>").appendTo(this.canvas);
 
         this.nameLabel = $("<span/>").appendTo(this.canvas);
 
@@ -187,11 +187,11 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
      * Called when a new (multi)controller event is available
      */
 
-    onControllerEvent: function(eventId) {
+    onControllerEvent: function (eventId) {
 
         // For this application we are looking at the wheel
         // and the buttons left and right
-        switch(eventId) {
+        switch (eventId) {
 
             /**
              * Go forward in displaying our sections
@@ -203,7 +203,7 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
                 // we just cyle the sections here
 
                 this.currentSectionIndex++;
-                if(this.currentSectionIndex >= this.sections.length) this.currentSectionIndex = 0;
+                if (this.currentSectionIndex >= this.sections.length) this.currentSectionIndex = 0;
 
                 this.showSection(this.currentSectionIndex);
 
@@ -219,12 +219,12 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
                 // we just cyle the sections here
 
                 this.currentSectionIndex--;
-                if(this.currentSectionIndex < 0) this.currentSectionIndex = this.sections.length -1;
+                if (this.currentSectionIndex < 0) this.currentSectionIndex = this.sections.length - 1;
 
-                 this.showSection(this.currentSectionIndex);
+                this.showSection(this.currentSectionIndex);
 
                 break;
-		}
+        }
     },
 
 
@@ -238,23 +238,25 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
      * This method registers all the sections we want to display
      */
 
-    createSections: function() {
+    createSections: function () {
 
         // Here we define our sections
 
         this.sections = [
 
             // Average Consumption
-            {field: VehicleData.fuel.averageconsumption, name: 'Average Fuel Consumption', unit: 'MPG'},
+            { field: VehicleData.fuel.averageconsumption, name: 'Average Fuel Consumption', unit: 'MPG' },
+
+            //TODO: Add more sections here
 
 
         ];
 
         // let's actually execute the subscriptions
 
-        this.sections.forEach(function(section, sectionIndex) {
+        this.sections.forEach(function (section, sectionIndex) {
 
-            this.subscribe(section.field, function(value) {
+            this.subscribe(section.field, function (value) {
 
                 // we got a new value for this subscription, let's update it
                 this.updateSection(sectionIndex, value);
@@ -271,10 +273,10 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
      * This method shows a section specific value / name
      */
 
-    showSection: function(sectionIndex) {
+    showSection: function (sectionIndex) {
 
         // just in case, let's do some sanity check
-        if(!this.sections || sectionIndex < 0 || sectionIndex >= this.sections.length) return false;
+        if (!this.sections || sectionIndex < 0 || sectionIndex >= this.sections.length) return false;
 
         // let's store the current section in a local variable
         var section = this.sections[sectionIndex],
@@ -282,13 +284,13 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
             // Let's get also the value and name
             value = section.value || 0,
             name = section.name;
-			unit = section.unit;
+        unit = section.unit;
 
 
         // Let's check if this value requires some transformation.
         // We are using the internal is handler to determinate
 
-        if(this.is.fn(section.transform)) {
+        if (this.is.fn(section.transform)) {
 
             // execute the transform
             var result = section.transform(section.value, sectionIndex);
@@ -298,8 +300,8 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
 
             // also set the name if necessary
             name = result.name || name;
-			
-			unit = result.unit || unit;
+
+            unit = result.unit || unit;
         }
 
         // now let's set the sections value
@@ -307,8 +309,8 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
 
         // and the name
         this.nameLabel.html(name);
-		
-		this.unitLabel.html(unit);
+
+        this.unitLabel.html(unit);
 
         // finally let's update the current section index
         this.currentSectionIndex = sectionIndex;
@@ -320,16 +322,16 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
      * This method updates a value and also updates the display if necessary
      */
 
-    updateSection: function(sectionIndex, value) {
+    updateSection: function (sectionIndex, value) {
 
         // just in case, let's do some sanity check
-        if(sectionIndex < 0 || sectionIndex >= this.sections.length) return false;
+        if (sectionIndex < 0 || sectionIndex >= this.sections.length) return false;
 
         // let's update the sections value
         this.sections[sectionIndex].value = value;
 
         // and finally, update the display if required
-        if(sectionIndex == this.currentSectionIndex) {
+        if (sectionIndex == this.currentSectionIndex) {
             this.showSection(this.currentSectionIndex);
         }
     },
