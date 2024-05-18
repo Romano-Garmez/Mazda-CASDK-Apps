@@ -138,33 +138,6 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
     },
 
 
-    /**
-     * (regions)
-     *
-     * A object that allows us to manage the different regions
-     */
-
-    regions: {
-
-        /**
-         * North America (na)
-         */
-
-        na: {
-        	unit: 'MPH',
-        	transform: DataTransform.toMPH,
-        },
-
-        /**
-         * Europe (eu)
-         */
-
-        eu: {
-        	unit: 'KM/H',
-        	transform: false
-        },
-    },
-
 
     /***
      *** User Interface Life Cycles
@@ -251,33 +224,8 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
                  this.showSection(this.currentSectionIndex);
 
                 break;
-
-            /**
-             * When the middle button is pressed, we will change the region
-             * just for this application
-             */
-
-            case "selectStart":
-
-                this.setRegion(this.getRegion() == "na" ? "eu" : "na");
-
-                break;
-        }
-
+		}
     },
-
-    /**
-     * (event) onRegionChange
-     *
-     * Called when the region is changed
-     */
-
-     onRegionChange: function(region) {
-
-        // let's just refresh our current section
-        this.showSection(this.currentSectionIndex);
-
-     },
 
 
     /***
