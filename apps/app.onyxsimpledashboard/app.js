@@ -201,7 +201,7 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         this.naldsDiv = $("<div/>", { class: 'box mcdonalds' }).appendTo(this.theDiv).text(' ');
 
         //TODO: make this on the bottom and spaced properly
-        $("<div/>", {class: 'overall'}).appendTo(this.holder).text(' 11111\n111');
+        $("<div/>", {class: 'overall'}).appendTo(this.holder).text(' ');
 
 
         // now let's get our data in place
