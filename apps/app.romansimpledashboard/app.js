@@ -245,10 +245,12 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
         this.sections = [
 
             // Default MPG units
-            { field: VehicleData.fuel.averageconsumption, name: 'Average Fuel Consumption', unit: 'MPG' },
+            { field: VehicleData.fuel.averageconsumption, name: 'Average Fuel Consumption', unit: 'MPG', multiplier: 1.0},
 
-            //TODO: Add more sections here
-            { field: VehicleData.fuel.averageconsumption, name: 'Average Fuel Consumption', unit: 'Bigs per Furlong' },
+            // Bigs 107.3 fluid oz
+            // 0.83828125 gallons per big
+            // 7.99998 furlongs per miles
+            { field: VehicleData.fuel.averageconsumption, name: 'Average Bigs Consumption', unit: 'Bigs per Furlong' , multiplier: (9.54331258158)},
 
         ];
 
@@ -256,10 +258,12 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
 
         this.sections.forEach(function (section, sectionIndex) {
 
-            this.subscribe(section.field, function (value) {
+            this.subscribe(VehicleData.fuel.averageconsumption, function (value) {
 
                 // we got a new value for this subscription, let's update it
-                this.updateSection(sectionIndex, value);
+                for (section in this.sections) {
+                    this.updateSection(section, value);
+                }
 
             }.bind(this));
 
@@ -282,9 +286,9 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
         var section = this.sections[sectionIndex],
 
             // Let's get also the value and name
-            value = section.value || 0,
+            value = section.value * section.multiplier || 0;
             name = section.name;
-        unit = section.unit;
+            unit = section.unit;
 
 
         // Let's check if this value requires some transformation.
@@ -302,6 +306,8 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
             name = result.name || name;
 
             unit = result.unit || unit;
+
+            multiplier = result.multiplier || multiplier;
         }
 
         // now let's set the sections value
