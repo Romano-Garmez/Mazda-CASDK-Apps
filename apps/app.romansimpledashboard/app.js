@@ -245,12 +245,12 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
         this.sections = [
 
             // Default MPG units
-            { field: VehicleData.fuel.averageconsumption, name: 'Average Fuel Consumption', unit: 'MPG', multiplier: 1.0},
+            { name: 'Average Fuel Consumption', unit: 'MPG', multiplier: 1.0},
 
             // Bigs 107.3 fluid oz
             // 0.83828125 gallons per big
             // 7.99998 furlongs per miles
-            { field: VehicleData.fuel.averageconsumption, name: 'Average Bigs Consumption', unit: 'Bigs per Furlong' , multiplier: (9.54331258158)},
+            { name: 'Average Bigs Consumption', unit: 'Bigs per Furlong' , multiplier: (9.54331258158)},
 
         ];
 
@@ -286,7 +286,7 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
         var section = this.sections[sectionIndex],
 
             // Let's get also the value and name
-            value = section.value * section.multiplier || 0;
+            value = Math.round((section.value * section.multiplier) * 100) / 100  || 0;
             name = section.name;
             unit = section.unit;
 
