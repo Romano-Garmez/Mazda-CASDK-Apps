@@ -244,11 +244,11 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
 
         this.sections = [
 
-            // Average Consumption
+            // Default MPG units
             { field: VehicleData.fuel.averageconsumption, name: 'Average Fuel Consumption', unit: 'MPG' },
 
             //TODO: Add more sections here
-
+            { field: VehicleData.fuel.averageconsumption, name: 'Average Fuel Consumption', unit: 'Bigs per Furlong' },
 
         ];
 
