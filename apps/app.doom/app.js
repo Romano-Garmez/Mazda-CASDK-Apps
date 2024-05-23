@@ -34,7 +34,7 @@ ase do not attempt to install this. You might
  */
 
 
-CustomApplicationsHandler.register("app.webembed", new CustomApplication({
+CustomApplicationsHandler.register("app.doom", new CustomApplication({
 
     /**
      * (require)
@@ -92,7 +92,7 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
          * (title) The title of the application in the Application menu
          */
 
-        title: 'Roman Web Embed',
+        title: 'Roman Doom',
 
         /**
          * (statusbar) Defines if the statusbar should be shown
@@ -144,7 +144,7 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
 
         // let's build our interface
         this.iframe = $("<iframe/>", {
-            src: "https://romangarms.com",  // URL of the site you want to embed
+            src: "https://romangarms.com/doom.html",  // URL of the site you want to embed
             width: 600,                      // Optional: set the width of the iframe
             height: 400,                     // Optional: set the height of the iframe
             frameborder: 0,                  // Optional: remove the border of the iframe
