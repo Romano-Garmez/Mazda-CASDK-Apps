@@ -92,7 +92,7 @@ CustomApplicationsHandler.register("app.doom", new CustomApplication({
          * (title) The title of the application in the Application menu
          */
 
-        title: 'Roman Doom',
+        title: 'Roman Doom Embed',
 
         /**
          * (statusbar) Defines if the statusbar should be shown
@@ -180,7 +180,11 @@ CustomApplicationsHandler.register("app.doom", new CustomApplication({
 
             case "selectStart":
 
-                this.setRegion(this.getRegion() == "na" ? "eu" : "na");
+                // let keyup=new KeyboardEvent(`keyup`,{key:83});
+                // document.dispatchEvent(keyup);
+
+                //jQuery.event.trigger({ type: 'keydown', which: 83 }); // press n key
+
 
                 break;
         }
