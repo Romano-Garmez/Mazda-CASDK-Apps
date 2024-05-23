@@ -140,7 +140,7 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 	calculateOffset: function(utcSeconds) {
 		
 		// SUMMER: 
-		utcSeconds = utcSeconds - (4 * 3600);
+		utcSeconds = utcSeconds - (8 * 3600);
 		// WINTER: 
 		//utcSeconds = utcSeconds - (5 * 3600);
 		
