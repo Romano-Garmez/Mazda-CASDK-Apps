@@ -92,7 +92,7 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
          * (title) The title of the application in the Application menu
          */
 
-        title: 'Roman Simple Dashboard',
+        title: 'Fuel Consumption Dashboard',
 
         /**
          * (statusbar) Defines if the statusbar should be shown
