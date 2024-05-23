@@ -157,7 +157,7 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
 
         // 1) create a value label that shows the current value of the selected section
 
-        this.valueLabel = $("<div/>").appendTo(this.canvas);
+        this.valueLabel = $("<div id=\"redBox\"/>").appendTo(this.canvas);
 
         // 2) create a name label that shows the name of the selected section
 
@@ -165,6 +165,8 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
 
         this.nameLabel = $("<span/>").appendTo(this.canvas);
 
+        //create gas gauge
+        this.fuelLevel = $("<div id=\"fuelLevel\"/>").appendTo(this.canvas);
 
         // now let's get our data in place
 
@@ -282,6 +284,15 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
                 }
 
             }.bind(this));
+
+        }.bind(this));
+
+        // update gas gauge
+        this.subscribe(VehicleData.fuel.position, function (value) {
+
+            var fuelLevelObj = document.getElementById('fuelLevel');
+            console.log(fuelLevel)
+            fuelLevelObj.style.right = 800 - ((value - 0) / (200 - 0)) * 800 +'px';
 
         }.bind(this));
 
