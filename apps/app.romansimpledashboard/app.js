@@ -248,10 +248,12 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
             { name: 'Average Fuel Consumption', unit: 'MPG', multiplier: 1.0},
 
             // Bigs 107.3 fluid oz
-            // 0.83828125 gallons per big
+            // 1.19291705499 bigs per gallon
             // 7.99998 furlongs per miles
             { name: 'Average Bigs Consumption', unit: 'Bigs per Furlong' , multiplier: (9.54331258158)},
 
+            // 320 rods per mile
+            { name: 'Average Kilobigs Consumption', unit: 'Kilobigs per Rod' , multiplier: (0.00372786579)},
         ];
 
         // let's actually execute the subscriptions
