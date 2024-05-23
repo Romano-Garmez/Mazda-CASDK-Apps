@@ -1,0 +1,27 @@
+=== Shortcut command ==
+clear	clear	
+ia	opkg install headunit
+ra	opkg remove headunit
+iv	opkg install mzd-videoplayer-vic
+rv	opkg remove mzd-videoplayer-vic
+i1	opkg install casdk-gpsspeed	
+r1	opkg remove casdk-gpsspeed	
+i2	opkg install casdk-multidash	
+r2	opkg remove casdk-multidash	
+i3	opkg install casdk-horloge	
+r3	opkg remove casdk-horloge	
+i4	opkg install casdk-speedthai	
+r4	opkg remove casdk-speedthai	
+i5	opkg install casdk-vdd	
+r5	opkg remove casdk-vdd	
+i11	opkg install mzd-aiotweaks	
+r11	opkg remove mzd-aiotweaks	
+i12	opkg install mzd-background-rotator	
+r12	opkg remove mzd-background-rotator	
+i13	opkg install mzd-cschatthai-font	
+r13	opkg remove mzd-cschatthai-font	
+i14	opkg install mzd-v59patch	
+r14	opkg remove mzd-v59patch	
+u	opkg update	
+g	opkg upgrade
+=======================================
