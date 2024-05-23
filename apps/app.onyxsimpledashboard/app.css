@@ -2,12 +2,20 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
+[app="app.onyxsimpledashboard"] div {
+  white-space: pre-wrap;
+}
+
+[app="app.onyxsimpledashboard"] div.stuffGoesHere {
+  width: 100%;
+  height: 100%;
+}
 
 [app="app.onyxsimpledashboard"] div.container {
   background: rgba(46, 46, 46, 0.75);
-  position: absolute;
-  width: 85%;
-  height: 85%;
+  position: relative;
+  width: auto;
+  height: 50%;
   margin: 25px;
   border: 5px solid rgba(0, 0, 0, 0.25);
   border-radius: 25px;
@@ -19,7 +27,7 @@
 
 
 [app="app.onyxsimpledashboard"] div.box {
-  width: 27%;
+  width: 30%;
   margin-top: 5%;
   margin-bottom: 5%;
   position: relative;
@@ -34,17 +42,12 @@
 [app="app.onyxsimpledashboard"] div.location {
   background: rgba(218, 218, 218, 0.75);
   border: solid rgba(245, 245, 245, 0.25);
-
 }
-
 
 [app="app.onyxsimpledashboard"] div.starbucks {
   background: rgba(3, 116, 3, 0.75);
   border: solid rgba(5, 90, 5, 0.75);
-
-
 }
-
 
 [app="app.onyxsimpledashboard"] div.mcdonalds {
   background: rgba(202, 206, 6, 0.75);
@@ -52,10 +55,8 @@
 }
 
 [app="app.onyxsimpledashboard"] div.overall {
-  position: absolute;
   background: rgba(214, 214, 214, 0.75);
   border: solid rgba(61, 61, 61, 0.75);
+
   margin: 5%;
-  width: 100%;
-  height: 5px;
 }

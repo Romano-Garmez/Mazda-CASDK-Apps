@@ -189,18 +189,19 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         // let's build our interface
 
 
-        this.theDiv = $('<div id = "info" class = "container"/>').appendTo(this.canvas);
+        this.holder = $("<div/>", { class: 'stuffGoesHere' }).appendTo(this.canvas)
+        this.theDiv = $('<div id = "info" class = "container"/>').appendTo(this.holder);
 
 
 
-        $("<div/>", { class: 'box location' }).appendTo(this.theDiv).text(' ');
+        this.locDiv = $("<div/>", { class: 'box location' }).appendTo(this.theDiv).text(' ');
 
-        $("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv).text(' ');
+        this.bucksDiv =$("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv).text(' ');
 
-        $("<div/>", { class: 'box mcdonalds' }).appendTo(this.theDiv).text(' ');
+        this.naldsDiv = $("<div/>", { class: 'box mcdonalds' }).appendTo(this.theDiv).text(' ');
 
         //TODO: make this on the bottom and spaced properly
-        $("<div/>", {class: 'overall'}).appendTo(this.canvas);
+        $("<div/>", {class: 'overall'}).appendTo(this.holder).text(' 11111\n111');
 
 
         // now let's get our data in place
@@ -293,6 +294,8 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
 
     updateGPS_position: function () {
         // now let's set the sections value
+
+        this.locDiv.text('long: ' + this.long + '\nlat: ' + this.lat)
 
     },
 
