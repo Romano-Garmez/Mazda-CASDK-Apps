@@ -1,0 +1,53 @@
+[out:csv(::lat, ::lon; true; ",")];
+
+area["ISO3166-1"="US"]->.usa;
+area["ISO3166-1"="MX"]->.mexico;
+area["ISO3166-1"="CA"]->.canada;
+
+(
+  node["name"~"McDonald's"](area.usa);
+  node["brand"~"McDonald's"](area.usa);
+  node["shop"~"fast_food"]["name"~"McDonald's"](area.usa);
+  node["amenity"="fast_food"]["name"~"McDonald's"](area.usa);
+
+  node["name"~"McDonald's"](area.mexico);
+  node["brand"~"McDonald's"](area.mexico);
+  node["shop"~"fast_food"]["name"~"McDonald's"](area.mexico);
+  node["amenity"="fast_food"]["name"~"McDonald's"](area.mexico);
+
+  node["name"~"McDonald's"](area.canada);
+  node["brand"~"McDonald's"](area.canada);
+  node["shop"~"fast_food"]["name"~"McDonald's"](area.canada);
+  node["amenity"="fast_food"]["name"~"McDonald's"](area.canada);
+);
+out body;
+
+
+
+
+
+
+
+[out:csv(::lat, ::lon; true; ";")];
+
+area["ISO3166-1"="US"]->.usa;
+area["ISO3166-1"="MX"]->.mexico;
+area["ISO3166-1"="CA"]->.canada;
+
+(
+  node["name"~"Starbucks"](area.usa);
+  node["brand"~"Starbucks"](area.usa);
+  node["shop"~"coffee"]["name"~"Starbucks"](area.usa);
+  node["amenity"="cafe"]["name"~"Starbucks"](area.usa);
+
+  node["name"~"Starbucks"](area.mexico);
+  node["brand"~"Starbucks"](area.mexico);
+  node["shop"~"coffee"]["name"~"Starbucks"](area.mexico);
+  node["amenity"="cafe"]["name"~"Starbucks"](area.mexico);
+
+  node["name"~"Starbucks"](area.canada);
+  node["brand"~"Starbucks"](area.canada);
+  node["shop"~"coffee"]["name"~"Starbucks"](area.canada);
+  node["amenity"="cafe"]["name"~"Starbucks"](area.canada);
+);
+out body;
