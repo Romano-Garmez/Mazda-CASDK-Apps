@@ -1,4 +1,6 @@
-
+[app="app.2048"] {
+	background: #3a3632;
+}
 
 [app="app.2048"] .heading:after {
   content: "";
@@ -79,8 +81,10 @@
   color: rgba(119, 110, 101, 0.9);
   z-index: 100;
   -webkit-animation: move-up 600ms ease-in;
+  animation: move-up 600ms ease-in;
   -moz-animation: move-up 600ms ease-in;
   -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
   -moz-animation-fill-mode: both;
 }
 
@@ -144,6 +148,7 @@
   cursor: default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
+  user-select: none;
   -moz-user-select: none;
   background: #bbada0;
   border-radius: 6px;
@@ -164,8 +169,10 @@
   z-index: 100;
   text-align: center;
   -webkit-animation: fade-in 800ms ease 1200ms;
+  animation: fade-in 800ms ease 1200ms;
   -moz-animation: fade-in 800ms ease 1200ms;
   -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
   -moz-animation-fill-mode: both;
 }
 [app="app.2048"] .game-container .game-message p {
@@ -201,7 +208,9 @@
 [app="app.2048"] .grid-container {
   position: absolute;
   z-index: 1;
+  background-color: #877d74;
 }
+
 
 [app="app.2048"] .grid-row {
   margin-bottom: 15px;
@@ -319,6 +328,7 @@
 }
 
 [app="app.2048"] .tile {
+  color: #776e65;
   border-radius: 3px;
   background: #eee4da;
   text-align: center;
@@ -326,8 +336,10 @@
   z-index: 10;
   font-size: 55px;
   -webkit-transition: 100ms ease-in-out;
+  transition: 100ms ease-in-out;
   -moz-transition: 100ms ease-in-out;
   -webkit-transition-property: top, left;
+  transition-property: top, left;
   -moz-transition-property: top, left;
 }
 [app="app.2048"] .tile.tile-2 {
@@ -448,8 +460,10 @@
 }
 [app="app.2048"] .tile-new {
   -webkit-animation: appear 200ms ease 100ms;
+  animation: appear 200ms ease 100ms;
   -moz-animation: appear 200ms ease 100ms;
   -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
   -moz-animation-fill-mode: both;
 }
 
@@ -498,8 +512,10 @@
 [app="app.2048"] .tile-merged {
   z-index: 20;
   -webkit-animation: pop 200ms ease 100ms;
+  animation: pop 200ms ease 100ms;
   -moz-animation: pop 200ms ease 100ms;
   -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
   -moz-animation-fill-mode: both;
 }
 
@@ -533,6 +549,7 @@
     cursor: default;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
+    user-select: none;
     -moz-user-select: none;
     background: #bbada0;
     border-radius: 6px;
@@ -553,8 +570,10 @@
     z-index: 100;
     text-align: center;
     -webkit-animation: fade-in 800ms ease 1200ms;
+    animation: fade-in 800ms ease 1200ms;
     -moz-animation: fade-in 800ms ease 1200ms;
     -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
     -moz-animation-fill-mode: both;
   }
   [app="app.2048"].game-container .game-message p {
