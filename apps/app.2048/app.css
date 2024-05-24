@@ -1,23 +1,12 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #faf8ef;
-  color: #776E65;
-  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-  font-size: 12px;
-}
 
-body {
-  margin: 80px 0;
-}
 
-.heading:after {
+[app="app.2048"] .heading:after {
   content: "";
   display: block;
   clear: both;
 }
 
-h1.title {
+[app="app.2048"] h1.title {
   font-size: 20px;
   font-weight: bold;
   margin: 0;
@@ -25,7 +14,7 @@ h1.title {
   float: left;
 }
 
-@-webkit-keyframes $animation-name {
+@-webkit-keyframes animation-name {
   0% {
     top: 25px;
     opacity: 1;
@@ -35,7 +24,7 @@ h1.title {
     opacity: 0;
   }
 }
-@-moz-keyframes $animation-name {
+@-moz-keyframes animation-name {
   0% {
     top: 25px;
     opacity: 1;
@@ -45,7 +34,7 @@ h1.title {
     opacity: 0;
   }
 }
-@keyframes $animation-name {
+@keyframes animation-name {
   0% {
     top: 25px;
     opacity: 1;
@@ -55,7 +44,7 @@ h1.title {
     opacity: 0;
   }
 }
-.score-container {
+[app="app.2048"] .score-container {
   position: relative;
   float: right;
   background: #bbada0;
@@ -68,7 +57,7 @@ h1.title {
   color: white;
   margin-top: 8px;
 }
-.score-container:after {
+[app="app.2048"] .score-container:after {
   position: absolute;
   width: 100%;
   top: 10px;
@@ -80,7 +69,7 @@ h1.title {
   text-align: center;
   color: #eee4da;
 }
-.score-container .score-addition {
+[app="app.2048"] .score-container .score-addition {
   position: absolute;
   right: 30px;
   color: red;
@@ -95,36 +84,36 @@ h1.title {
   -moz-animation-fill-mode: both;
 }
 
-p {
+[app="app.2048"] p {
   margin-top: 0;
   margin-bottom: 10px;
   line-height: 1.65;
 }
 
-a {
+[app="app.2048"] a {
   color: #776E65;
   font-weight: bold;
   text-decoration: underline;
   cursor: pointer;
 }
 
-strong.important {
+[app="app.2048"] strong.important {
   text-transform: uppercase;
 }
 
-hr {
+[app="app.2048"] hr {
   border: none;
   border-bottom: 1px solid #d8d4d0;
   margin-top: 20px;
   margin-bottom: 30px;
 }
 
-.container {
+[app="app.2048"] .container {
   width: 500px;
   margin: 0 auto;
 }
 
-@-webkit-keyframes $animation-name {
+@-webkit-keyframes animation-name {
   0% {
     opacity: 0;
   }
@@ -132,7 +121,7 @@ hr {
     opacity: 1;
   }
 }
-@-moz-keyframes $animation-name {
+@-moz-keyframes animation-name {
   0% {
     opacity: 0;
   }
@@ -140,7 +129,7 @@ hr {
     opacity: 1;
   }
 }
-@keyframes $animation-name {
+@keyframes animation-name {
   0% {
     opacity: 0;
   }
@@ -148,7 +137,7 @@ hr {
     opacity: 1;
   }
 }
-.game-container {
+[app="app.2048"] .game-container {
   margin-top: 40px;
   position: relative;
   padding: 15px;
@@ -164,7 +153,7 @@ hr {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.game-container .game-message {
+[app="app.2048"] .game-container .game-message {
   display: none;
   position: absolute;
   top: 0;
@@ -179,18 +168,18 @@ hr {
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
 }
-.game-container .game-message p {
+[app="app.2048"] .game-container .game-message p {
   font-size: 60px;
   font-weight: bold;
   height: 60px;
   line-height: 60px;
   margin-top: 222px;
 }
-.game-container .game-message .lower {
+[app="app.2048"] .game-container .game-message .lower {
   display: block;
   margin-top: 59px;
 }
-.game-container .game-message a {
+[app="app.2048"] .game-container .game-message a {
   display: inline-block;
   background: #8f7a66;
   border-radius: 3px;
@@ -201,32 +190,32 @@ hr {
   line-height: 42px;
   margin-left: 9px;
 }
-.game-container .game-message.game-won {
+[app="app.2048"] .game-container .game-message.game-won {
   background: rgba(237, 194, 46, 0.5);
   color: #f9f6f2;
 }
-.game-container .game-message.game-won, .game-container .game-message.game-over {
+[app="app.2048"] .game-container .game-message.game-won, .game-container .game-message.game-over {
   display: block;
 }
 
-.grid-container {
+[app="app.2048"] .grid-container {
   position: absolute;
   z-index: 1;
 }
 
-.grid-row {
+[app="app.2048"] .grid-row {
   margin-bottom: 15px;
 }
-.grid-row:last-child {
+[app="app.2048"] .grid-row:last-child {
   margin-bottom: 0;
 }
-.grid-row:after {
+[app="app.2048"] .grid-row:after {
   content: "";
   display: block;
   clear: both;
 }
 
-.grid-cell {
+[app="app.2048"] .grid-cell {
   width: 106.25px;
   height: 106.25px;
   margin-right: 15px;
@@ -234,102 +223,102 @@ hr {
   border-radius: 3px;
   background: rgba(238, 228, 218, 0.35);
 }
-.grid-cell:last-child {
+[app="app.2048"] .grid-cell:last-child {
   margin-right: 0;
 }
 
-.tile-container {
+[app="app.2048"] .tile-container {
   position: absolute;
   z-index: 2;
 }
 
-.tile {
+[app="app.2048"] .tile {
   width: 106.25px;
   height: 106.25px;
   line-height: 116.25px;
 }
-.tile.tile-position-1-1 {
+[app="app.2048"] .tile.tile-position-1-1 {
   position: absolute;
   left: 0px;
   top: 0px;
 }
-.tile.tile-position-1-2 {
+[app="app.2048"] .tile.tile-position-1-2 {
   position: absolute;
   left: 0px;
   top: 121px;
 }
-.tile.tile-position-1-3 {
+[app="app.2048"] .tile.tile-position-1-3 {
   position: absolute;
   left: 0px;
   top: 243px;
 }
-.tile.tile-position-1-4 {
+[app="app.2048"] .tile.tile-position-1-4 {
   position: absolute;
   left: 0px;
   top: 364px;
 }
-.tile.tile-position-2-1 {
+[app="app.2048"] .tile.tile-position-2-1 {
   position: absolute;
   left: 121px;
   top: 0px;
 }
-.tile.tile-position-2-2 {
+[app="app.2048"] .tile.tile-position-2-2 {
   position: absolute;
   left: 121px;
   top: 121px;
 }
-.tile.tile-position-2-3 {
+[app="app.2048"] .tile.tile-position-2-3 {
   position: absolute;
   left: 121px;
   top: 243px;
 }
-.tile.tile-position-2-4 {
+[app="app.2048"] .tile.tile-position-2-4 {
   position: absolute;
   left: 121px;
   top: 364px;
 }
-.tile.tile-position-3-1 {
+[app="app.2048"] .tile.tile-position-3-1 {
   position: absolute;
   left: 243px;
   top: 0px;
 }
-.tile.tile-position-3-2 {
+[app="app.2048"] .tile.tile-position-3-2 {
   position: absolute;
   left: 243px;
   top: 121px;
 }
-.tile.tile-position-3-3 {
+[app="app.2048"] .tile.tile-position-3-3 {
   position: absolute;
   left: 243px;
   top: 243px;
 }
-.tile.tile-position-3-4 {
+[app="app.2048"] .tile.tile-position-3-4 {
   position: absolute;
   left: 243px;
   top: 364px;
 }
-.tile.tile-position-4-1 {
+[app="app.2048"] .tile.tile-position-4-1 {
   position: absolute;
   left: 364px;
   top: 0px;
 }
-.tile.tile-position-4-2 {
+[app="app.2048"] .tile.tile-position-4-2 {
   position: absolute;
   left: 364px;
   top: 121px;
 }
-.tile.tile-position-4-3 {
+[app="app.2048"] .tile.tile-position-4-3 {
   position: absolute;
   left: 364px;
   top: 243px;
 }
-.tile.tile-position-4-4 {
+[app="app.2048"] .tile.tile-position-4-4 {
   position: absolute;
   left: 364px;
   top: 364px;
 }
 
-.tile {
+[app="app.2048"] .tile {
   border-radius: 3px;
   background: #eee4da;
   text-align: center;
@@ -341,31 +330,31 @@ hr {
   -webkit-transition-property: top, left;
   -moz-transition-property: top, left;
 }
-.tile.tile-2 {
+[app="app.2048"] .tile.tile-2 {
   background: #eee4da;
   box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
 }
-.tile.tile-4 {
+[app="app.2048"] .tile.tile-4 {
   background: #eee1c9;
   box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
 }
-.tile.tile-8 {
+[app="app.2048"] .tile.tile-8 {
   color: #f9f6f2;
   background: #f3b27a;
 }
-.tile.tile-16 {
+[app="app.2048"] .tile.tile-16 {
   color: #f9f6f2;
   background: #f69664;
 }
-.tile.tile-32 {
+[app="app.2048"] .tile.tile-32 {
   color: #f9f6f2;
   background: #f77c5f;
 }
-.tile.tile-64 {
+[app="app.2048"] .tile.tile-64 {
   color: #f9f6f2;
   background: #f75f3b;
 }
-.tile.tile-128 {
+[app="app.2048"] .tile.tile-128 {
   color: #f9f6f2;
   background: #edd073;
   box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.2380952381), inset 0 0 0 1px rgba(255, 255, 255, 0.1428571429);
@@ -376,7 +365,7 @@ hr {
     font-size: 25px;
   }
 }
-.tile.tile-256 {
+[app="app.2048"] .tile.tile-256 {
   color: #f9f6f2;
   background: #edcc62;
   box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.3174603175), inset 0 0 0 1px rgba(255, 255, 255, 0.1904761905);
@@ -387,7 +376,7 @@ hr {
     font-size: 25px;
   }
 }
-.tile.tile-512 {
+[app="app.2048"] .tile.tile-512 {
   color: #f9f6f2;
   background: #edc950;
   box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.3968253968), inset 0 0 0 1px rgba(255, 255, 255, 0.2380952381);
@@ -398,7 +387,7 @@ hr {
     font-size: 25px;
   }
 }
-.tile.tile-1024 {
+[app="app.2048"] .tile.tile-1024 {
   color: #f9f6f2;
   background: #edc53f;
   box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.4761904762), inset 0 0 0 1px rgba(255, 255, 255, 0.2857142857);
@@ -409,19 +398,19 @@ hr {
     font-size: 15px;
   }
 }
-.tile.tile-2048 {
+[app="app.2048"] .tile.tile-2048 {
   color: #f9f6f2;
   background: #edc22e;
   box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.5555555556), inset 0 0 0 1px rgba(255, 255, 255, 0.3333333333);
   font-size: 35px;
 }
 @media screen and (max-width: 480px) {
-  .tile.tile-2048 {
+  [app="app.2048"] .tile.tile-2048 {
     font-size: 15px;
   }
 }
 
-@-webkit-keyframes $animation-name {
+@-webkit-keyframes animation-name {
   0% {
     opacity: 0;
     -webkit-transform: scale(0);
@@ -433,7 +422,7 @@ hr {
     -moz-transform: scale(1);
   }
 }
-@-moz-keyframes $animation-name {
+@-moz-keyframes animation-name {
   0% {
     opacity: 0;
     -webkit-transform: scale(0);
@@ -445,7 +434,7 @@ hr {
     -moz-transform: scale(1);
   }
 }
-@keyframes $animation-name {
+@keyframes animation-name {
   0% {
     opacity: 0;
     -webkit-transform: scale(0);
@@ -457,14 +446,14 @@ hr {
     -moz-transform: scale(1);
   }
 }
-.tile-new {
+[app="app.2048"] .tile-new {
   -webkit-animation: appear 200ms ease 100ms;
   -moz-animation: appear 200ms ease 100ms;
   -webkit-animation-fill-mode: both;
   -moz-animation-fill-mode: both;
 }
 
-@-webkit-keyframes $animation-name {
+@-webkit-keyframes animation-name {
   0% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
@@ -478,7 +467,7 @@ hr {
     -moz-transform: scale(1);
   }
 }
-@-moz-keyframes $animation-name {
+@-moz-keyframes animation-name {
   0% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
@@ -492,7 +481,7 @@ hr {
     -moz-transform: scale(1);
   }
 }
-@keyframes $animation-name {
+@keyframes animation-name {
   0% {
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
@@ -506,7 +495,7 @@ hr {
     -moz-transform: scale(1);
   }
 }
-.tile-merged {
+[app="app.2048"] .tile-merged {
   z-index: 20;
   -webkit-animation: pop 200ms ease 100ms;
   -moz-animation: pop 200ms ease 100ms;
@@ -514,36 +503,30 @@ hr {
   -moz-animation-fill-mode: both;
 }
 
-.game-intro {
+[app="app.2048"] .game-intro {
   margin-bottom: 0;
 }
 
-.game-explanation {
+[app="app.2048"] .game-explanation {
   margin-top: 50px;
 }
 
 @media screen and (max-width: 480px) {
-  html, body {
-    font-size: 15px;
-  }
-  body {
-    margin: 20px 0;
-    padding: 0 20px;
-  }
-  h1.title {
+  
+  [app="app.2048"] h1.title {
     font-size: 50px;
   }
-  .container {
+  [app="app.2048"] .container {
     width: 280px;
     margin: 0 auto;
   }
-  .score-container {
+  [app="app.2048"] .score-container {
     margin-top: 0;
   }
-  .heading {
+  [app="app.2048"] .heading {
     margin-bottom: 10px;
   }
-  .game-container {
+  [app="app.2048"] .game-container {
     margin-top: 40px;
     position: relative;
     padding: 15px;
@@ -559,7 +542,7 @@ hr {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
-  .game-container .game-message {
+  [app="app.2048"] .game-container .game-message {
     display: none;
     position: absolute;
     top: 0;
@@ -574,18 +557,18 @@ hr {
     -webkit-animation-fill-mode: both;
     -moz-animation-fill-mode: both;
   }
-  .game-container .game-message p {
+  [app="app.2048"].game-container .game-message p {
     font-size: 60px;
     font-weight: bold;
     height: 60px;
     line-height: 60px;
     margin-top: 222px;
   }
-  .game-container .game-message .lower {
+  [app="app.2048"] .game-container .game-message .lower {
     display: block;
     margin-top: 59px;
   }
-  .game-container .game-message a {
+  [app="app.2048"] .game-container .game-message a {
     display: inline-block;
     background: #8f7a66;
     border-radius: 3px;
@@ -596,29 +579,29 @@ hr {
     line-height: 42px;
     margin-left: 9px;
   }
-  .game-container .game-message.game-won {
+  [app="app.2048"] .game-container .game-message.game-won {
     background: rgba(237, 194, 46, 0.5);
     color: #f9f6f2;
   }
-  .game-container .game-message.game-won, .game-container .game-message.game-over {
+  [app="app.2048"].game-container .game-message.game-won, .game-container .game-message.game-over {
     display: block;
   }
-  .grid-container {
+  [app="app.2048"] .grid-container {
     position: absolute;
     z-index: 1;
   }
-  .grid-row {
+  [app="app.2048"] .grid-row {
     margin-bottom: 15px;
   }
-  .grid-row:last-child {
+  [app="app.2048"] .grid-row:last-child {
     margin-bottom: 0;
   }
-  .grid-row:after {
+  [app="app.2048"].grid-row:after {
     content: "";
     display: block;
     clear: both;
   }
-  .grid-cell {
+  [app="app.2048"] .grid-cell {
     width: 106.25px;
     height: 106.25px;
     margin-right: 15px;
@@ -626,111 +609,111 @@ hr {
     border-radius: 3px;
     background: rgba(238, 228, 218, 0.35);
   }
-  .grid-cell:last-child {
+  [app="app.2048"] .grid-cell:last-child {
     margin-right: 0;
   }
-  .tile-container {
+  [app="app.2048"] .tile-container {
     position: absolute;
     z-index: 2;
   }
-  .tile {
+  [app="app.2048"] .tile {
     width: 106.25px;
     height: 106.25px;
     line-height: 116.25px;
   }
-  .tile.tile-position-1-1 {
+  [app="app.2048"] .tile.tile-position-1-1 {
     position: absolute;
     left: 0px;
     top: 0px;
   }
-  .tile.tile-position-1-2 {
+  [app="app.2048"] .tile.tile-position-1-2 {
     position: absolute;
     left: 0px;
     top: 121px;
   }
-  .tile.tile-position-1-3 {
+  [app="app.2048"] .tile.tile-position-1-3 {
     position: absolute;
     left: 0px;
     top: 243px;
   }
-  .tile.tile-position-1-4 {
+  [app="app.2048"] .tile.tile-position-1-4 {
     position: absolute;
     left: 0px;
     top: 364px;
   }
-  .tile.tile-position-2-1 {
+  [app="app.2048"] .tile.tile-position-2-1 {
     position: absolute;
     left: 121px;
     top: 0px;
   }
-  .tile.tile-position-2-2 {
+  [app="app.2048"] .tile.tile-position-2-2 {
     position: absolute;
     left: 121px;
     top: 121px;
   }
-  .tile.tile-position-2-3 {
+  [app="app.2048"] .tile.tile-position-2-3 {
     position: absolute;
     left: 121px;
     top: 243px;
   }
-  .tile.tile-position-2-4 {
+  [app="app.2048"] .tile.tile-position-2-4 {
     position: absolute;
     left: 121px;
     top: 364px;
   }
-  .tile.tile-position-3-1 {
+  [app="app.2048"] .tile.tile-position-3-1 {
     position: absolute;
     left: 243px;
     top: 0px;
   }
-  .tile.tile-position-3-2 {
+  [app="app.2048"] .tile.tile-position-3-2 {
     position: absolute;
     left: 243px;
     top: 121px;
   }
-  .tile.tile-position-3-3 {
+  [app="app.2048"] .tile.tile-position-3-3 {
     position: absolute;
     left: 243px;
     top: 243px;
   }
-  .tile.tile-position-3-4 {
+  [app="app.2048"] .tile.tile-position-3-4 {
     position: absolute;
     left: 243px;
     top: 364px;
   }
-  .tile.tile-position-4-1 {
+  [app="app.2048"] .tile.tile-position-4-1 {
     position: absolute;
     left: 364px;
     top: 0px;
   }
-  .tile.tile-position-4-2 {
+  [app="app.2048"] .tile.tile-position-4-2 {
     position: absolute;
     left: 364px;
     top: 121px;
   }
-  .tile.tile-position-4-3 {
+  [app="app.2048"] .tile.tile-position-4-3 {
     position: absolute;
     left: 364px;
     top: 243px;
   }
-  .tile.tile-position-4-4 {
+  [app="app.2048"] .tile.tile-position-4-4 {
     position: absolute;
     left: 364px;
     top: 364px;
   }
-  .game-container {
+  [app="app.2048"] .game-container {
     margin-top: 20px;
   }
-  .tile {
+  [app="app.2048"] .tile {
     font-size: 35px;
   }
-  .game-message p {
+  [app="app.2048"] .game-message p {
     font-size: 30px !important;
     height: 30px !important;
     line-height: 30px !important;
     margin-top: 90px !important;
   }
-  .game-message .lower {
+  [app="app.2048"] .game-message .lower {
     margin-top: 30px !important;
   }
 }
