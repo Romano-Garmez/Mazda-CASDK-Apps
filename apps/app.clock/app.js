@@ -28,7 +28,7 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 		// terminateOnLost: false,
 		title: 'Clock',
 		statusbar: false,
-		statusbarIcon: true,
+		statusbarIcon: false,
 		statusbarTitle: false,
 		// statusbarHideHomeButton: true,
 		hasLeftButton: false,

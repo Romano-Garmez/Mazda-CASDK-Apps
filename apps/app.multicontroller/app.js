@@ -8,8 +8,7 @@
  * Copyright (c) 2016. All rights reserved.
  *
  * WARNING: The installation of this application requires modifications to your Mazda Connect system.
- * If you don't feel comfortable performing these changes, ple
-ase do not attempt to install this. You might
+ * If you don't feel comfortable performing these changes, please do not attempt to install this. You might
  * be ending up with an unusuable system that requires reset by your Dealer. You were warned!
  *
  * This program is free software: you can redistribute it and/or modify it under the terms of the
@@ -26,15 +25,15 @@ ase do not attempt to install this. You might
  */
 
 /**
- * SimpleDashboard Example Applicatiom
+ * Multicontroller Example Applicatiom
  *
- * This is a tutorial example application showing a simple Dashboard that allows cycling
- * between Vehicle values using the Multicontroller.
+ * This is a tutorial example application showing and testing the built-in Multicontroller context
+ * aware methods.
  *
  */
 
 
-CustomApplicationsHandler.register("app.webembed", new CustomApplication({
+CustomApplicationsHandler.register("app.multicontroller", new CustomApplication({
 
     /**
      * (require)
@@ -92,13 +91,13 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
          * (title) The title of the application in the Application menu
          */
 
-        title: 'Roman Web Embed',
+        title: 'Multicontroller Demo',
 
         /**
          * (statusbar) Defines if the statusbar should be shown
          */
 
-        statusbar: false,
+        statusbar: true,
 
         /**
          * (statusbarIcon) defines the status bar icon
@@ -134,27 +133,35 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
          * (hasRightArc) indicates if the standard right car should be displayed
          */
 
-        hasRightArc: false,
+        hasRightArc: true,
+
     },
 
 
-   
+
+    /***
+     *** User Interface Life Cycles
+     ***/
+
+    /**
+     * (created)
+     *
+     * Executed when the application gets initialized
+     *
+     * Add any content that will be static here
+     */
 
     created: function() {
 
         // let's build our interface
-        this.iframe = $("<iframe/>", {
-            src: "https://romangarms.com",  // URL of the site you want to embed
-            width: 600,                      // Optional: set the width of the iframe
-            height: 400,                     // Optional: set the height of the iframe
-            frameborder: 0,                  // Optional: remove the border of the iframe
-            style: "border:none;",           // Optional: ensure no border is displayed
-            allowfullscreen: false
-        }).appendTo(this.canvas);
-        
+
+        // 1) create our context aware sections
+        this.createSections();
+
+        // 2) create our statusbar
+        this.statusBar = $("<div/>").addClass("status").appendTo(this.canvas);
 
     },
-
 
     /***
      *** Events
@@ -168,25 +175,58 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
 
     onControllerEvent: function(eventId) {
 
-        // For this application we are looking at the wheel
-        // and the buttons left and right
-        switch(eventId) {
-
-
-            /**
-             * When the middle button is pressed, we will change the region
-             * just for this application
-             */
-
-            case "selectStart":
-
-                this.setRegion(this.getRegion() == "na" ? "eu" : "na");
-
-                break;
-        }
+        // We only get not processed values from the multicontroller here
 
     },
 
+
+    /**
+     * (event) onContextEvent
+     *
+     * Called when the context of an element was changed
+     */
+
+    onContextEvent: function(eventId, context, element) {
+
+        // We only get not processed values from the multicontroller here
+
+    },
+
+
+    /***
+     *** Applicaton specific methods
+     ***/
+
+    /**
+     * (createSections)
+     *
+     * This method registers all the sections we want to display
+     */
+
+    createSections: function() {
+
+        // random data for testing
+        [
+
+            {top: 20, left: 20, title: "Panel 1"},
+            {top: 250, left:250, title: "Panel 2"}
+
+        ].forEach(function(item) {
+
+            /**
+             * addContext is our main method to make anything a context aware item and expects either
+             * a JQUERY or DOM element.
+             *
+             */
+
+            this.addContext($("<div/>").addClass("section").css(item).append(item.title).appendTo(this.canvas), function(event, element) {
+
+            });
+
+        }.bind(this));
+
+
+    },
 
 
 }));

@@ -8,8 +8,7 @@
  * Copyright (c) 2016. All rights reserved.
  *
  * WARNING: The installation of this application requires modifications to your Mazda Connect system.
- * If you don't feel comfortable performing these changes, ple
-ase do not attempt to install this. You might
+ * If you don't feel comfortable performing these changes, please do not attempt to install this. You might
  * be ending up with an unusuable system that requires reset by your Dealer. You were warned!
  *
  * This program is free software: you can redistribute it and/or modify it under the terms of the
@@ -26,15 +25,14 @@ ase do not attempt to install this. You might
  */
 
 /**
- * SimpleDashboard Example Applicatiom
+ * 2048
  *
- * This is a tutorial example application showing a simple Dashboard that allows cycling
- * between Vehicle values using the Multicontroller.
+ * ?? game ever written for the Mazda Infotainment System
  *
  */
 
 
-CustomApplicationsHandler.register("app.webembed", new CustomApplication({
+CustomApplicationsHandler.register("app.2048", new CustomApplication({
 
     /**
      * (require)
@@ -50,7 +48,7 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
          * (js) defines javascript includes
          */
 
-        js: [],
+        js: ['2048.js'],
 
         /**
          * (css) defines css includes
@@ -77,22 +75,10 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
     settings: {
 
         /**
-         * (terminateOnLost)
-         *
-         * If set to 'true' this will remove the stateless life cycle and always
-         * recreate the application once the focus is lost. Otherwise by default
-         * the inital created state will stay alive across the systems runtime.
-         *
-         * Default is false or not set
-         * /
-
-        // terminateOnLost: false,
-
-        /**
          * (title) The title of the application in the Application menu
          */
 
-        title: 'Roman Web Embed',
+        title: '2048',
 
         /**
          * (statusbar) Defines if the statusbar should be shown
@@ -135,26 +121,51 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
          */
 
         hasRightArc: false,
+
     },
 
 
-   
+    /***
+     *** User Interface Life Cycles
+     ***/
+
+    /**
+     * (created)
+     *
+     * Executed when the application gets initialized
+     *
+     * Add any content that will be static here
+     */
 
     created: function() {
 
-        // let's build our interface
-        this.iframe = $("<iframe/>", {
-            src: "https://romangarms.com",  // URL of the site you want to embed
-            width: 600,                      // Optional: set the width of the iframe
-            height: 400,                     // Optional: set the height of the iframe
-            frameborder: 0,                  // Optional: remove the border of the iframe
-            style: "border:none;",           // Optional: ensure no border is displayed
-            allowfullscreen: false
-        }).appendTo(this.canvas);
-        
+ 
+        // init 2048
+        this.initializeGameBoard();
+
+
+
 
     },
 
+    /**
+     * (focused)
+     */
+
+    focused: function() {
+
+        
+    },
+
+    /**
+     * (lost)
+     */
+
+    lost: function() {
+
+        
+
+    },
 
     /***
      *** Events
@@ -168,25 +179,75 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
 
     onControllerEvent: function(eventId) {
 
-        // For this application we are looking at the wheel
-        // and the buttons left and right
-        switch(eventId) {
-
-
-            /**
-             * When the middle button is pressed, we will change the region
-             * just for this application
-             */
-
-            case "selectStart":
-
-                this.setRegion(this.getRegion() == "na" ? "eu" : "na");
-
-                break;
-        }
+        this.manager.handle(eventId);
 
     },
 
 
+    /***
+     *** Applicaton specific methods
+     ***/
+
+    initializeGameBoard: function() {
+
+        this.g2048 = $("<div/>").addClass("gameBoard").appendTo(this.canvas);
+
+        this.g2048.html(
+       // '<div class="container">' +
+       // '    <div class="heading">' +
+       // '    <h1 class="title">2048</h1>' +
+        '    <div class="score-container">0</div>' +
+       // '  </div>' +
+       // '  <div class="game-container">' +
+     //   '    <div class="game-message">' +
+     //   '      <p></p>' +
+     //   '      <div class ="lower">' +
+     //   '        <a class="retry-button">Try again</a>' +
+     //   '      </div>' +
+     //   '    </div>' +
+        '    <div class="grid-container">' +
+        '      <div class="grid-row">' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '      </div>' +
+        '      <div class="grid-row">' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '      </div>' +
+        '      <div class="grid-row">' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '      </div>' +
+        '      <div class="grid-row">' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '        <div class="grid-cell"></div>' +
+        '      </div>' +
+        '    </div>' +
+        '    <div class="tile-container">' +
+        '    </div>' +
+        '  </div>' +
+    
+        '  <hr>' +
+        '</div>'
+
+
+            );
+
+        this.manager = new GameManager(4, KeyboardInputManager, HTMLActuator,this.g2048.get(0));
+
+
+
+
+    }
 
 }));
+
+
