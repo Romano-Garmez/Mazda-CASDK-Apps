@@ -98,7 +98,7 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
          * (statusbar) Defines if the statusbar should be shown
          */
 
-        statusbar: true,
+        statusbar: false,
 
         /**
          * (statusbarIcon) defines the status bar icon
@@ -109,7 +109,7 @@ CustomApplicationsHandler.register("app.webembed", new CustomApplication({
          * Icons need to be 37x37
          */
 
-        statusbarIcon: true,
+        statusbarIcon: false,
 
         /**
          * (statusbarTitle) overrides the statusbar title, otherwise title is used

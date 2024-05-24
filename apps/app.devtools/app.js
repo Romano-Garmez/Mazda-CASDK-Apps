@@ -95,7 +95,7 @@ CustomApplicationsHandler.register("app.devtools", new CustomApplication({
          * Icons need to be 37x37
          */
 
-        statusbarIcon: true,
+        statusbarIcon: false,
 
         /**
          * (statusbarTitle) overrides the statusbar title, otherwise title is used
