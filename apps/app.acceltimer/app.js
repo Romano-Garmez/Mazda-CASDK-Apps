@@ -320,38 +320,32 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
      */
 
     showSection: function (sectionIndex) {
+        // now let's set the sections value
 
-        // just in case, let's do some sanity check
-        if (!this.sections || sectionIndex < 0 || sectionIndex >= this.sections.length) return false;
-
-        // let's store the current section in a local variable
-        var section = this.sections[sectionIndex],
-
-            // Let's get also the value and name
-            value = section.value || 0,
-            name = section.name;
-
-
-        // Let's check if this value requires some transformation.
-        // We are using the internal is handler to determinate
-
-        if (this.is.fn(section.transform)) {
-
-            // execute the transform
-            var result = section.transform(section.value, sectionIndex);
-
-            // set the updated value
-            value = result.value || 0;
-
-            // also set the name if necessary
-            name = result.name || name;
+        speed = this.sections[0].value;
+        this.valueLabel.html(speed);
+        
+        if (speed == 0) {
+            stopTimer();
         }
 
-        // now let's set the sections value
-        this.valueLabel.html(value);
+        if (isTimerRunning() == false) {
+            if (speed != 0 && speed < 99) {
+                startTimer();
+            }
+        }
+
+        if (isTimerRunning() == true) {
+            if (speed > 99) {
+                this.endTimer();
+            }
+        }
 
         // and the name
-        this.nameLabel.html(name);
+        this.nameLabel.html(this.regions[this.getRegion()].unit);
+
+        //update RPM label
+        this.rpmLabel.html(this.sections[1].value + " RPM");
 
         // finally let's update the current section index
         this.currentSectionIndex = sectionIndex;
@@ -371,21 +365,6 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         // let's update the sections value
         this.sections[sectionIndex].value = value;
 
-        if (value == 0) {
-            stopTimer();
-        }
-
-        if (isTimerRunning() == false) {
-            if (value != 0 && value < 99) {
-                startTimer();
-            }
-        }
-
-        if (isTimerRunning() == true) {
-            if (value > 99) {
-                this.endTimer();
-            }
-        }
 
         // and finally, update the display if required
 
