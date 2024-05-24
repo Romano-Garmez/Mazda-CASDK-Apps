@@ -184,33 +184,47 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
      */
 
     created: function () {
-        
-        // how close you have to be to an establishment for it to count
-        this.passedRange = 300
 
-        
+        // how close you have to be to an establishment for it to count
+        this.passedRange = 100
+        // how long has to pass before the same establishment can be recorded again
+        this.passedTimeout = 120
+
+        this.starbucksPassed = this.get('starbucksPassed')
+        this.mcdonaldsPassed = this.get('mcdonaldsPassed')
+
+        if (this.starbucksPassed == null) {
+            this.starbucksPassed = 0
+        }
+        if (this.mcdonaldsPassed == null) {
+            this.mcdonaldsPassed = 0
+        }
+
+
+
         this.recentStarbucks = new Map();
+        this.recentMcdonalds = new Map();
 
         // the position of the car
         // this is updated by the subscriptioins
-        this.gpsPosition = {lat: 0, long: 0}
+        this.gpsPosition = { lat: 0, long: 0 }
 
         // let's build our interface
-        
+
 
         this.holder = $("<div/>", { class: 'stuffGoesHere' }).appendTo(this.canvas)
         this.theDiv = $('<div id = "info" class = "container"/>').appendTo(this.holder);
 
+        this.locDiv = $("<div/>", { class: 'box location' }).appendTo(this.theDiv)
+        //appending to the locDiv appears to be impossible somehow
 
-
-        this.locDiv = $("<div/>", { class: 'box location' }).appendTo(this.theDiv).text(' ');
-
-        this.starbucksDiv =$("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv).text(' ');
+        
+        this.starbucksDiv = $("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv).text(' ');
 
         this.mcdonaldsDiv = $("<div/>", { class: 'box mcdonalds' }).appendTo(this.theDiv).text(' ');
 
         //TODO: make this on the bottom and spaced properly
-        $("<div/>", {class: 'overall'}).appendTo(this.holder).text(' ');
+        this.overallDiv = $("<div/>", { class: 'overall' }).appendTo(this.holder).text(' ');
 
 
         // now let's get our data in place
@@ -292,7 +306,7 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
      */
 
     setLong: function (_long) {
-        this.gpsPosition.long=_long
+        this.gpsPosition.long = _long
         this.updateDisplay();
     },
 
@@ -307,11 +321,78 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         this.locDiv.text('long: ' + this.gpsPosition.long + '\nlat: ' + this.gpsPosition.lat)
 
         nearestStarbucks = getNearestCoord(starbucksGPScoords, this.gpsPosition)
-        this.starbucksDiv.text('nearest starbucks is at: ' + coodinateToString(nearestStarbucks.coord) + '\nDistance: ' + nearestStarbucks.distance)
+        
 
+        //TODO: a long car trip will accumulate memory of past starbucks/mcdonanalds, fix.
 
+        //TODO: these if statements could be written in a better way
+
+        //check if the nearest starbucks is in detection range
+        if (nearestStarbucks.distance < this.passedRange) {
+            //if we have an entry for it we will check it, if not make a new one and add to the count.
+            if (this.recentStarbucks.has(nearestStarbucks.coord.long)) {
+
+                // check how long ago this starbucks was logged
+                lastAccessed = this.recentStarbucks.get(nearestStarbucks.coord.long)
+                msDiff = Math.abs(lastAccessed - new Date())
+
+                // if it was less than the timeout(seconds) ago, just update it
+                if (msDiff < 1000 * this.passedTimeout) {
+                    this.recentStarbucks.set(nearestStarbucks.coord.long, new Date())
+                } else {
+                    // if it was longer than that, update it but also increment the count
+                    this.recentStarbucks.set(nearestStarbucks.coord.long, new Date())
+                    this.starbucksPassed++;
+                    this.set('starbucksPassed', this.starbucksPassed )
+                }
+            } else {
+                // if there is no entry, make one and increment count
+                this.recentStarbucks.set(nearestStarbucks.coord.long, new Date())
+                this.starbucksPassed++;
+                this.set('starbucksPassed', this.starbucksPassed )
+
+            }
+
+        }
+
+        
         nearestMcdonalds = getNearestCoord(mcdonaldsGPSCoords, this.gpsPosition)
-        this.mcdonaldsDiv.text('nearest macdonalds is at: ' + coodinateToString(nearestMcdonalds.coord) + '\nDistance: ' + nearestMcdonalds.distance)
+
+
+        if (nearestMcdonalds.distance < this.passedRange) {
+            //if we have an entry for it we will check it, if not make a new one and add to the count.
+            if (this.recentMcdonalds.has(nearestMcdonalds.coord.long)) {
+
+                // check how long ago this Mcdonalds was logged
+                lastAccessed = this.recentMcdonalds.get(nearestMcdonalds.coord.long)
+                msDiff = Math.abs(lastAccessed - new Date())
+
+                // if it was less than the timeout(seconds) ago, just update it
+                if (msDiff < 1000 * this.passedTimeout) {
+                    this.recentMcdonalds.set(nearestMcdonalds.coord.long, new Date())
+                } else {
+                    // if it was longer than that, update it but also increment the count
+                    this.recentMcdonalds.set(nearestMcdonalds.coord.long, new Date())
+                    this.mcdonaldsPassed++;
+                    this.set('mcdonaldsPassed', this.mcdonaldsPassed )
+                }
+            } else {
+                // if there is no entry, make one and increment count
+                this.recentMcdonalds.set(nearestMcdonalds.coord.long, new Date())
+                this.mcdonaldsPassed++;
+                this.set('mcdonaldsPassed', this.mcdonaldsPassed )
+
+            }
+
+        }
+
+
+
+        this.starbucksDiv.text('nearest starbucks is at: ' + coodinateToString(nearestStarbucks.coord) + '\nDistance: ' + nearestStarbucks.distance + '\n count: ' + this.starbucksPassed)
+
+        this.mcdonaldsDiv.text('nearest mcdonalds is at: ' + coodinateToString(nearestMcdonalds.coord) + '\nDistance: ' + nearestMcdonalds.distance+ '\n count: ' + this.mcdonaldsPassed)
+        
+        this.overallDiv.text('Starbucks:Mcdonalds: ' + this.starbucksPassed + ":" + this.mcdonaldsPassed + '     Starbucks/Mcdonalds: ' + (this.starbucksPassed / this.mcdonaldsPassed))
 
     },
 
