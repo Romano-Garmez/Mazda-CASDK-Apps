@@ -184,10 +184,19 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
      */
 
     created: function () {
-        this.lat = 0;
-        this.long = 0;
-        // let's build our interface
+        
+        // how close you have to be to an establishment for it to count
+        this.passedRange = 300
 
+        
+        this.recentStarbucks = new Map();
+
+        // the position of the car
+        // this is updated by the subscriptioins
+        this.gpsPosition = {lat: 0, long: 0}
+
+        // let's build our interface
+        
 
         this.holder = $("<div/>", { class: 'stuffGoesHere' }).appendTo(this.canvas)
         this.theDiv = $('<div id = "info" class = "container"/>').appendTo(this.holder);
@@ -196,9 +205,9 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
 
         this.locDiv = $("<div/>", { class: 'box location' }).appendTo(this.theDiv).text(' ');
 
-        this.bucksDiv =$("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv).text(' ');
+        this.starbucksDiv =$("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv).text(' ');
 
-        this.naldsDiv = $("<div/>", { class: 'box mcdonalds' }).appendTo(this.theDiv).text(' ');
+        this.mcdonaldsDiv = $("<div/>", { class: 'box mcdonalds' }).appendTo(this.theDiv).text(' ');
 
         //TODO: make this on the bottom and spaced properly
         $("<div/>", {class: 'overall'}).appendTo(this.holder).text(' ');
@@ -283,19 +292,26 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
      */
 
     setLong: function (_long) {
-        this.long = _long
-        this.updateGPS_position();
+        this.gpsPosition.long=_long
+        this.updateDisplay();
     },
 
     setLat: function (_lat) {
-        this.lat = _lat
-        this.updateGPS_position();
+        this.gpsPosition.lat = _lat
+        this.updateDisplay();
     },
 
-    updateGPS_position: function () {
+    updateDisplay: function () {
         // now let's set the sections value
 
-        this.locDiv.text('long: ' + this.long + '\nlat: ' + this.lat)
+        this.locDiv.text('long: ' + this.gpsPosition.long + '\nlat: ' + this.gpsPosition.lat)
+
+        nearestStarbucks = getNearestCoord(starbucksGPScoords, this.gpsPosition)
+        this.starbucksDiv.text('nearest starbucks is at: ' + coodinateToString(nearestStarbucks.coord) + '\nDistance: ' + nearestStarbucks.distance)
+
+
+        nearestMcdonalds = getNearestCoord(mcdonaldsGPSCoords, this.gpsPosition)
+        this.mcdonaldsDiv.text('nearest macdonalds is at: ' + coodinateToString(nearestMcdonalds.coord) + '\nDistance: ' + nearestMcdonalds.distance)
 
     },
 
