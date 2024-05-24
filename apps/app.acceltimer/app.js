@@ -326,50 +326,43 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         // We are using the internal is handler to determinate
 
         // let's store the current section in a local variable
-        var section = this.sections[0],
+        var carSpeed = this.sections[0];
 
-            // Let's get also the value and name
-            value = section.value || 0,
-            name = section.name;
+        //convert speed to MPH/KMH as needed
 
-
-        // Let's check if this value requires some transformation.
-        // We are using the internal is handler to determinate
-
-        if (this.is.fn(section.transform)) {
+        if (this.is.fn(carSpeed.transform)) {
 
             // execute the transform
-            var result = section.transform(section.value, 0);
+            var result = carSpeed.transform(carSpeed.value, 0);
 
             // set the updated value
             speed = result.value || 0;
-
-            // also set the name if necessary
-            name = result.name || name;
         }
 
+        //update speed on display
         this.valueLabel.html(speed);
 
-        if (speed == 0) {
+        //check if timer should be started or stopped
+        if (carSpeed.value == 0) {
             stopTimer();
         }
 
         if (isTimerRunning() == false) {
-            if (speed != 0 && speed < 99) {
+            if (carSpeed.value != 0 && carSpeed.value < 99) {
                 startTimer();
             }
         }
 
         if (isTimerRunning() == true) {
-            if (speed > 99) {
+            if (carSpeed.value > 99) {
                 this.endTimer();
             }
         }
 
-        // and the name
+        // update name on display
         this.nameLabel.html(this.regions[this.getRegion()].unit);
 
-        //update RPM label
+        //update RPM label on display
         this.rpmLabel.html(this.sections[1].value + " RPM");
 
     },
@@ -385,15 +378,13 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         // let's update the sections value
         this.sections[sectionIndex].value = value;
 
-
         // and finally, update the display if required
 
         this.showSection();
 
     },
 
-
-
+    //end timer, display time
     endTimer: function () {
         accelTime = stopTimer(); //in ms
         console.log(accelTime);
