@@ -4,10 +4,10 @@
 [app="app.acceltimer"] div {
   background: rgba(255, 0, 0, 0.75);
   position: absolute;
-  top: 45px;
+  top: 15px;
   left: 25px;
-  bottom: 50px;
-  right: 475px;
+  bottom: 100px;
+  right: 480px;
   text-align: center;
   line-height: 300px;
   font-size: 150px;
@@ -17,7 +17,7 @@
 }
 [app="app.acceltimer"] span {
   position: absolute;
-  bottom: 60px;
+  bottom: 115px;
   left: 0;
   right: 250px;
   font-size: 25px;
@@ -28,10 +28,21 @@
 }
 [app="app.acceltimer"] #timingbox {
   position: absolute;
-  top: 45px;
+  top: 15px;
   left: 325px;
-  bottom: 50px;
+  bottom: 100px;
   right: 25px;
   font-size: 50px;
   background: rgba(0, 255, 0, 0.75);
+}
+
+[app="app.acceltimer"] #RPMbox {
+  position: absolute;
+  top: 325px;
+  left: 25px;
+  bottom: 0px;
+  right: 25px;
+  line-height: 75px;
+  font-size: 50px;
+  background: rgba(0, 0, 255, 0.75);
 }

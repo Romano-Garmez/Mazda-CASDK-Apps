@@ -1,11 +1,12 @@
 var startTime = 0;
 
-function startTimer () {
+function startTimer() {
     console.log("Timer started");
     startTime = new Date().getTime();
 }
 
-function stopTimer () {
+//end timer, clear values, return timer difference in MS
+function stopTimer() {
     console.log("Timer ended");
     var endTime = new Date().getTime();
 
@@ -15,6 +16,7 @@ function stopTimer () {
     return timeDiff;
 }
 
-function isTimerRunning () {
+//timer is active if start time is greater than 0
+function isTimerRunning() {
     return startTime > 0;
 }

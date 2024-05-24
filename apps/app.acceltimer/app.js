@@ -180,8 +180,6 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
 
     created: function () {
 
-
-
         // let's build our interface
 
         // 1) create a value label that shows the current value of the selected section
@@ -195,6 +193,10 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         this.timingLabel = $("<div id=\"timingbox\"/>").appendTo(this.canvas);
 
         this.timingLabel.html("0 seconds");
+
+        this.rpmLabel = $("<div id=\"RPMbox\"/>").appendTo(this.canvas);
+
+        this.rpmLabel.html("0 RPM");
 
         // now let's get our data in place
 
@@ -222,10 +224,23 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         // and the buttons left and right
         switch (eventId) {
 
-            case "selectStart":
+            case "cw":
+            case "rightStart":
 
                 this.setRegion(this.getRegion() == "na" ? "eu" : "na");
 
+                break;
+
+            case "ccw":
+            case "leftStart":
+
+                this.setRegion(this.getRegion() == "na" ? "eu" : "na");
+
+                break;
+
+            case "selectStart":
+                this.endTimer();
+                this.timingLabel.html("0 seconds");
                 break;
         }
 
@@ -277,6 +292,9 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
 
                 }.bind(this)
             },
+
+            // Vehicle RPM
+            { field: VehicleData.vehicle.rpm, name: 'RPM' },
 
         ];
 
@@ -370,9 +388,9 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         }
 
         // and finally, update the display if required
-        if (sectionIndex == this.currentSectionIndex) {
-            this.showSection(this.currentSectionIndex);
-        }
+
+        this.showSection(this.currentSectionIndex);
+
     },
 
 
