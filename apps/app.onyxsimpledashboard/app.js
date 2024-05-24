@@ -57,7 +57,7 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
          * (js) defines javascript includes
          */
 
-        js: [],
+        js: ['data.js', 'gpsUtils.js'],
 
         /**
          * (css) defines css includes
