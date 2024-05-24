@@ -299,7 +299,6 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         ];
 
         // let's actually execute the subscriptions
-
         this.sections.forEach(function (section, sectionIndex) {
 
             this.subscribe(section.field, function (value) {
