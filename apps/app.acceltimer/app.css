@@ -19,8 +19,8 @@
   position: absolute;
   bottom: 115px;
   left: 0;
-  right: 250px;
-  font-size: 25px;
+  right: 270px;
+  font-size: 35px;
   color: rgba(255, 255, 255, 0.95);
   text-align: center;
   display: block;
@@ -29,7 +29,7 @@
 [app="app.acceltimer"] #timingbox {
   position: absolute;
   top: 15px;
-  left: 325px;
+  left: 330px;
   bottom: 100px;
   right: 25px;
   font-size: 50px;

@@ -319,12 +319,37 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
      * This method shows a section specific value / name
      */
 
-    showSection: function (sectionIndex) {
+    showSection: function () {
         // now let's set the sections value
 
-        speed = this.sections[0].value;
+        // Let's check if this value requires some transformation.
+        // We are using the internal is handler to determinate
+
+        // let's store the current section in a local variable
+        var section = this.sections[0],
+
+            // Let's get also the value and name
+            value = section.value || 0,
+            name = section.name;
+
+
+        // Let's check if this value requires some transformation.
+        // We are using the internal is handler to determinate
+
+        if (this.is.fn(section.transform)) {
+
+            // execute the transform
+            var result = section.transform(section.value, 0);
+
+            // set the updated value
+            speed = result.value || 0;
+
+            // also set the name if necessary
+            name = result.name || name;
+        }
+
         this.valueLabel.html(speed);
-        
+
         if (speed == 0) {
             stopTimer();
         }
@@ -347,8 +372,6 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         //update RPM label
         this.rpmLabel.html(this.sections[1].value + " RPM");
 
-        // finally let's update the current section index
-        this.currentSectionIndex = sectionIndex;
     },
 
     /**
@@ -359,16 +382,13 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
 
     updateSection: function (sectionIndex, value) {
 
-        // just in case, let's do some sanity check
-        if (sectionIndex < 0 || sectionIndex >= this.sections.length) return false;
-
         // let's update the sections value
         this.sections[sectionIndex].value = value;
 
 
         // and finally, update the display if required
 
-        this.showSection(this.currentSectionIndex);
+        this.showSection();
 
     },
 
