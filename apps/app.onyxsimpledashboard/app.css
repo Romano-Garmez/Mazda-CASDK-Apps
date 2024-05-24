@@ -6,16 +6,28 @@
   white-space: pre-wrap;
 }
 
-[app="app.onyxsimpledashboard"] div.stuffGoesHere {
+[app="app.onyxsimpledashboard"] .stuffGoesHere {
   width: 100%;
   height: 100%;
 }
 
-[app="app.onyxsimpledashboard"] div.container {
+.arrow {
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 40px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+[app="app.onyxsimpledashboard"] .container {
   background: rgba(46, 46, 46, 0.75);
   position: relative;
   width: auto;
-  height: 50%;
+  height: 60%;
   margin: 25px;
   border: 5px solid rgba(0, 0, 0, 0.25);
   border-radius: 25px;
@@ -26,8 +38,9 @@
 }
 
 
-[app="app.onyxsimpledashboard"] div.box {
+[app="app.onyxsimpledashboard"] .box {
   width: 30%;
+  height: 70%;
   margin-top: 5%;
   margin-bottom: 5%;
   position: relative;
@@ -39,22 +52,22 @@
   color: rgba(20, 20, 20, 0.9);
 }
 
-[app="app.onyxsimpledashboard"] div.location {
+[app="app.onyxsimpledashboard"] .location {
   background: rgba(218, 218, 218, 0.75);
   border: solid rgba(245, 245, 245, 0.25);
 }
 
-[app="app.onyxsimpledashboard"] div.starbucks {
+[app="app.onyxsimpledashboard"] .starbucks {
   background: rgba(3, 116, 3, 0.75);
   border: solid rgba(5, 90, 5, 0.75);
 }
 
-[app="app.onyxsimpledashboard"] div.mcdonalds {
+[app="app.onyxsimpledashboard"] .mcdonalds {
   background: rgba(202, 206, 6, 0.75);
   border: solid rgba(119, 108, 7, 0.75);
 }
 
-[app="app.onyxsimpledashboard"] div.overall {
+[app="app.onyxsimpledashboard"] .overall {
   background: rgba(214, 214, 214, 0.75);
   border: solid rgba(61, 61, 61, 0.75);
 
