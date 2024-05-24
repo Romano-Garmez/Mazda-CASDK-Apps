@@ -180,8 +180,6 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
 
     created: function () {
 
-
-
         // let's build our interface
 
         // 1) create a value label that shows the current value of the selected section
@@ -195,6 +193,10 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         this.timingLabel = $("<div id=\"timingbox\"/>").appendTo(this.canvas);
 
         this.timingLabel.html("0 seconds");
+
+        this.rpmLabel = $("<div id=\"RPMbox\"/>").appendTo(this.canvas);
+
+        this.rpmLabel.html("0 RPM");
 
         // now let's get our data in place
 
@@ -222,10 +224,23 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
         // and the buttons left and right
         switch (eventId) {
 
-            case "selectStart":
+            case "cw":
+            case "rightStart":
 
                 this.setRegion(this.getRegion() == "na" ? "eu" : "na");
 
+                break;
+
+            case "ccw":
+            case "leftStart":
+
+                this.setRegion(this.getRegion() == "na" ? "eu" : "na");
+
+                break;
+
+            case "selectStart":
+                this.endTimer();
+                this.timingLabel.html("0 seconds");
                 break;
         }
 
@@ -278,10 +293,12 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
                 }.bind(this)
             },
 
+            // Vehicle RPM
+            { field: VehicleData.vehicle.rpm, name: 'RPM' },
+
         ];
 
         // let's actually execute the subscriptions
-
         this.sections.forEach(function (section, sectionIndex) {
 
             this.subscribe(section.field, function (value) {
@@ -301,42 +318,52 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
      * This method shows a section specific value / name
      */
 
-    showSection: function (sectionIndex) {
-
-        // just in case, let's do some sanity check
-        if (!this.sections || sectionIndex < 0 || sectionIndex >= this.sections.length) return false;
-
-        // let's store the current section in a local variable
-        var section = this.sections[sectionIndex],
-
-            // Let's get also the value and name
-            value = section.value || 0,
-            name = section.name;
-
+    showSection: function () {
+        // now let's set the sections value
 
         // Let's check if this value requires some transformation.
         // We are using the internal is handler to determinate
 
-        if (this.is.fn(section.transform)) {
+        // let's store the current section in a local variable
+        var carSpeed = this.sections[0];
+
+        //convert speed to MPH/KMH as needed
+
+        if (this.is.fn(carSpeed.transform)) {
 
             // execute the transform
-            var result = section.transform(section.value, sectionIndex);
+            var result = carSpeed.transform(carSpeed.value, 0);
 
             // set the updated value
-            value = result.value || 0;
-
-            // also set the name if necessary
-            name = result.name || name;
+            speed = result.value || 0;
         }
 
-        // now let's set the sections value
-        this.valueLabel.html(value);
+        //update speed on display
+        this.valueLabel.html(speed);
 
-        // and the name
-        this.nameLabel.html(name);
+        //check if timer should be started or stopped
+        if (carSpeed.value == 0) {
+            stopTimer();
+        }
 
-        // finally let's update the current section index
-        this.currentSectionIndex = sectionIndex;
+        if (isTimerRunning() == false) {
+            if (carSpeed.value != 0 && carSpeed.value < 99) {
+                startTimer();
+            }
+        }
+
+        if (isTimerRunning() == true) {
+            if (carSpeed.value > 99) {
+                this.endTimer();
+            }
+        }
+
+        // update name on display
+        this.nameLabel.html(this.regions[this.getRegion()].unit);
+
+        //update RPM label on display
+        this.rpmLabel.html(this.sections[1].value + " RPM");
+
     },
 
     /**
@@ -347,36 +374,16 @@ CustomApplicationsHandler.register("app.acceltimer", new CustomApplication({
 
     updateSection: function (sectionIndex, value) {
 
-        // just in case, let's do some sanity check
-        if (sectionIndex < 0 || sectionIndex >= this.sections.length) return false;
-
         // let's update the sections value
         this.sections[sectionIndex].value = value;
 
-        if (value == 0) {
-            stopTimer();
-        }
-
-        if (isTimerRunning() == false) {
-            if (value != 0 && value < 99) {
-                startTimer();
-            }
-        }
-
-        if (isTimerRunning() == true) {
-            if (value > 99) {
-                this.endTimer();
-            }
-        }
-
         // and finally, update the display if required
-        if (sectionIndex == this.currentSectionIndex) {
-            this.showSection(this.currentSectionIndex);
-        }
+
+        this.showSection();
+
     },
 
-
-
+    //end timer, display time
     endTimer: function () {
         accelTime = stopTimer(); //in ms
         console.log(accelTime);
