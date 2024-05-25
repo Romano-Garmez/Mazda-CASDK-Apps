@@ -291,7 +291,6 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
         this.subscribe(VehicleData.fuel.position, function (value) {
 
             var fuelLevelObj = document.getElementById('fuelLevel');
-            console.log(fuelLevel)
             fuelLevelObj.style.right = 800 - ((value - 0) / (200 - 0)) * 800 +'px';
 
         }.bind(this));
@@ -313,7 +312,7 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
         var section = this.sections[sectionIndex],
 
             // Let's get also the value and name
-            value = Math.round((section.value * section.lengthPerMile / section.volumePerGallon) * 100) / 100  || 0;
+            value = Math.round(((section.value * section.lengthPerMile / section.volumePerGallon)/4.25531914894) * 100) / 100  || 0;
             name = section.name;
             unit = section.unit;
 
