@@ -1,11 +1,13 @@
 [app="app.onyxsimpledashboard"] {
   background: rgba(0, 0, 0, 0.5);
 }
+/*
 
+Apparently unsupported by the version of opera on the car
 [app="app.onyxsimpledashboard"] div {
   white-space: pre-wrap;
 }
-
+*/
 [app="app.onyxsimpledashboard"] .stuffGoesHere {
   width: 100%;
   height: 100%;
