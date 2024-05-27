@@ -216,9 +216,16 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         this.theDiv = $('<div id = "info" class = "container"/>').appendTo(this.holder);
 
         this.locDiv = $("<div/>", { class: 'box location' }).appendTo(this.theDiv)
-        //appending to the locDiv appears to be impossible somehow
+        /// appending to the locDiv appears to be impossible somehow
+        /// but it does not throw an error
+        try {
+            console.log('attempting to append')
+        $("<b>TestText</b>").appendTo(this.locDiv)
+        console.log('TestText should exist now')
+        } catch (error) {
+            console.log('could not append')
+        }
 
-        
         this.starbucksDiv = $("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv).text(' ');
 
         this.mcdonaldsDiv = $("<div/>", { class: 'box mcdonalds' }).appendTo(this.theDiv).text(' ');
