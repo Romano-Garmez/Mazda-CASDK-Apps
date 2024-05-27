@@ -321,11 +321,8 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         this.locDiv.text('long: ' + this.gpsPosition.long + '\nlat: ' + this.gpsPosition.lat)
 
         nearestStarbucks = getNearestCoord(starbucksGPScoords, this.gpsPosition)
-        
-
-        //TODO: a long car trip will accumulate memory of past starbucks/mcdonanalds, fix.
-
-        //TODO: these if statements could be written in a better way
+        this.addToNearbyCount(nearestStarbucks, this.recentStarbucks, this.starbucksPassed, 'starbucksPassed')
+/*
 
         //check if the nearest starbucks is in detection range
         if (nearestStarbucks.distance < this.passedRange) {
@@ -354,37 +351,12 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
             }
 
         }
+        */
 
         
         nearestMcdonalds = getNearestCoord(mcdonaldsGPSCoords, this.gpsPosition)
+        this.addToNearbyCount(nearestMcdonalds, this.recentMcdonalds, this.mcdonaldsPassed, 'mcdonaldsPassed')
 
-
-        if (nearestMcdonalds.distance < this.passedRange) {
-            //if we have an entry for it we will check it, if not make a new one and add to the count.
-            if (this.recentMcdonalds.has(nearestMcdonalds.coord.long)) {
-
-                // check how long ago this Mcdonalds was logged
-                lastAccessed = this.recentMcdonalds.get(nearestMcdonalds.coord.long)
-                msDiff = Math.abs(lastAccessed - new Date())
-
-                // if it was less than the timeout(seconds) ago, just update it
-                if (msDiff < 1000 * this.passedTimeout) {
-                    this.recentMcdonalds.set(nearestMcdonalds.coord.long, new Date())
-                } else {
-                    // if it was longer than that, update it but also increment the count
-                    this.recentMcdonalds.set(nearestMcdonalds.coord.long, new Date())
-                    this.mcdonaldsPassed++;
-                    this.set('mcdonaldsPassed', this.mcdonaldsPassed )
-                }
-            } else {
-                // if there is no entry, make one and increment count
-                this.recentMcdonalds.set(nearestMcdonalds.coord.long, new Date())
-                this.mcdonaldsPassed++;
-                this.set('mcdonaldsPassed', this.mcdonaldsPassed )
-
-            }
-
-        }
 
 
 
@@ -396,6 +368,43 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
 
     },
 
+    addToNearbyCount: function(nearestEstablishment, recentEstablishment, establishmentPassed, storageName){
+        
+
+        //TODO: a long car trip will accumulate memory of past starbucks/mcdonanalds, fix.
+
+        //TODO: these if statements could be written in a better way
+
+        if (nearestEstablishment.distance < this.passedRange) {
+            //if we have an entry for it we will check it, if not make a new one and add to the count.
+            if (recentEstablishment.has(nearestEstablishment.coord.long)) {
+
+                // check how long ago this establishment was logged
+                lastAccessed = recentEstablishment.get(nearestEstablishment.coord.long)
+                msDiff = Math.abs(lastAccessed - new Date())
+ 
+                // if it was less than the timeout(seconds) ago, just update it
+                if (msDiff < 1000 * this.passedTimeout) {
+                    recentEstablishment.set(nearestEstablishment.coord.long, new Date())
+                } else {
+                    // if it was longer than that, update it but also increment the count
+                    recentEstablishment.set(nearestEstablishment.coord.long, new Date())
+                    establishmentPassed++;
+                    //save updated count
+                    this.set(storageName, establishmentPassed )
+                }
+            } else {
+                // if there is no entry, make one and increment count
+                recentEstablishment.set(nearestEstablishment.coord.long, new Date())
+                establishmentPassed++;
+                //save updated count
+                this.set(storageName, establishmentPassed)
+
+            }
+
+        }
+        
+    }
 
 
 
