@@ -238,6 +238,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
             case "selectStart":
                 resetAverageSpeed();
+                resetStopwatch();
                 break;
         }
 

@@ -39,5 +39,9 @@ function showStopwatchTime() {
 function resetStopwatch() {
     startTime = -1;
     endTime = -1;
+    clearInterval(swinterval);
+
     swhtmlElement.html("00:00:00");
+
+    startStopwatch(swhtmlElement);
 }
