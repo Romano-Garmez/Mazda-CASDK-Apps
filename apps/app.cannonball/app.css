@@ -29,7 +29,7 @@
 [app="app.cannonball"] #timingbox {
   position: absolute;
   line-height: 300px;
-  font-size: 50px;
+  font-size: 100px;
   top: 15px;
   left: 330px;
   bottom: 100px;
@@ -54,7 +54,19 @@
   left: 25px;
   bottom: 100px;
   right: 480px;
-  line-height: 125px;
-  font-size: 50px;
+  line-height: 100px;
+  font-size: 100px;
   background: rgba(0, 0, 255, 0.75);
+}
+
+[app="app.cannonball"] #AVGSpeedLabel {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 330px;
+  font-size: 35px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
 }

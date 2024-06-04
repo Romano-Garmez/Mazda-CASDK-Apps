@@ -51,7 +51,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
          * (js) defines javascript includes
          */
 
-        js: ['timer.js'],
+        js: ['averageSpeed.js', 'stopwatch.js'],
 
         /**
          * (css) defines css includes
@@ -192,15 +192,19 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.timingLabel = $("<div id=\"timingbox\"/>").appendTo(this.canvas);
 
-        this.timingLabel.html("0 seconds");
+        this.timingLabel.html("0:00:00");
 
         this.rpmLabel = $("<div id=\"RPMbox\"/>").appendTo(this.canvas);
 
         this.rpmLabel.html("0 RPM");
 
-        this.avgSpeedLabel = $("<div id=\"AVGSpeedbox\"/>").appendTo(this.canvas);
+        this.avgSpeedBox = $("<div id=\"AVGSpeedbox\"/>").appendTo(this.canvas);
 
-        this.avgSpeedLabel.html("60 AVG MPH");
+        this.avgSpeedLabel = $("<span id=\"AVGSpeedLabel\"/>").appendTo(this.canvas);
+
+        this.avgSpeedBox.html("60");
+        
+        this.avgSpeedLabel.html("AVG MPH");
 
         // now let's get our data in place
 
@@ -228,23 +232,8 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         // and the buttons left and right
         switch (eventId) {
 
-            case "cw":
-            case "rightStart":
-
-                this.setRegion(this.getRegion() == "na" ? "eu" : "na");
-
-                break;
-
-            case "ccw":
-            case "leftStart":
-
-                this.setRegion(this.getRegion() == "na" ? "eu" : "na");
-
-                break;
-
             case "selectStart":
-                this.endTimer();
-                this.timingLabel.html("0 seconds");
+                clearInterval(interval); // thanks @Luca D'Amico
                 break;
         }
 
@@ -299,7 +288,6 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
             // Vehicle RPM
             { field: VehicleData.vehicle.rpm, name: 'RPM' },
-
         ];
 
         // let's actually execute the subscriptions
@@ -314,6 +302,10 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         }.bind(this));
 
+
+        
+         
+         
     },
 
     /**
@@ -345,28 +337,14 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         //update speed on display
         this.valueLabel.html(speed);
 
-        //check if timer should be started or stopped
-        if (carSpeed.value == 0) {
-            stopTimer();
-        }
-
-        if (isTimerRunning() == false) {
-            if (carSpeed.value != 0 && carSpeed.value < 99) {
-                startTimer();
-            }
-        }
-
-        if (isTimerRunning() == true) {
-            if (carSpeed.value > 99) {
-                this.endTimer();
-            }
-        }
-
         // update name on display
         this.nameLabel.html(this.regions[this.getRegion()].unit);
 
         //update RPM label on display
         this.rpmLabel.html(this.sections[1].value + " RPM");
+
+        this.avgSpeedBox.html(Math.round(updateAverageSpeed(speed) * 100) / 100);
+
 
     },
 
@@ -386,14 +364,5 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.showSection();
 
     },
-
-    //end timer, display time
-    endTimer: function () {
-        accelTime = stopTimer(); //in ms
-        console.log(accelTime);
-
-        secondsTime = accelTime / 1000;
-        this.timingLabel.html(secondsTime + " seconds");
-    }
 
 }));
