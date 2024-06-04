@@ -206,13 +206,15 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         
         this.avgSpeedLabel.html("AVG MPH");
 
+        startAvgSpeed(this.avgSpeedBox);
+
         // now let's get our data in place
 
         // 1) create our sections by calling our application specific method
         this.createSections();
 
         // 2) Finally show the first section
-        this.showSection(0);
+        this.showSection();
     },
 
 
@@ -233,7 +235,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         switch (eventId) {
 
             case "selectStart":
-                clearInterval(interval); // thanks @Luca D'Amico
+                resetAverageSpeed();
                 break;
         }
 
@@ -343,7 +345,10 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         //update RPM label on display
         this.rpmLabel.html(this.sections[1].value + " RPM");
 
-        this.avgSpeedBox.html(Math.round(updateAverageSpeed(speed) * 100) / 100);
+        //update average speed on display
+        setCurrentSpeed(speed);
+
+        
 
 
     },
