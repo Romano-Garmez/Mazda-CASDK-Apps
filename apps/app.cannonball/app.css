@@ -1,0 +1,60 @@
+[app="app.cannonball"] {
+	background:rgba(0, 0, 0, 0.5);
+}
+[app="app.cannonball"] div {
+  background: rgba(255, 0, 0, 0.75);
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  bottom: 250px;
+  right: 480px;
+  text-align: center;
+  line-height: 125px;
+  font-size: 100px;
+  border: 5px solid rgba(255, 0, 0, 0.25);
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+[app="app.cannonball"] span {
+  position: absolute;
+  bottom: 250px;
+  left: 0;
+  right: 270px;
+  font-size: 35px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+[app="app.cannonball"] #timingbox {
+  position: absolute;
+  line-height: 300px;
+  font-size: 50px;
+  top: 15px;
+  left: 330px;
+  bottom: 100px;
+  right: 25px;
+  background: rgba(0, 255, 0, 0.75);
+}
+
+[app="app.cannonball"] #RPMbox {
+  position: absolute;
+  top: 325px;
+  left: 25px;
+  bottom: 0px;
+  right: 25px;
+  line-height: 75px;
+  font-size: 50px;
+  background: rgba(0, 0, 255, 0.75);
+}
+
+[app="app.cannonball"] #AVGSpeedbox {
+  position: absolute;
+  top: 175px;
+  left: 25px;
+  bottom: 100px;
+  right: 480px;
+  line-height: 125px;
+  font-size: 50px;
+  background: rgba(0, 0, 255, 0.75);
+}
