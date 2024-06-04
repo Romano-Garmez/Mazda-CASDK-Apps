@@ -208,6 +208,8 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         startAvgSpeed(this.avgSpeedBox);
 
+        startStopwatch(this.timingLabel);
+
         // now let's get our data in place
 
         // 1) create our sections by calling our application specific method
