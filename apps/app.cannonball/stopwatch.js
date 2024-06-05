@@ -1,7 +1,7 @@
 startTime = -1;
 endTime = -1;
 swhtmlElement = null;
-running = false;
+swinterval = null;
 
 /* startStopwatch
  * Start the stopwatch with an interval of 1 second
@@ -10,9 +10,8 @@ running = false;
 function startStopwatch(inputHTMLElement) {
     swhtmlElement = inputHTMLElement;
     startTime = new Date().getTime();
-    running = true;
 
-    const swinterval = setInterval(function () {
+     swinterval = setInterval(function () {
         showStopwatchTime()
     }, 1000);
 }
@@ -21,7 +20,6 @@ function startStopwatch(inputHTMLElement) {
  * Stop the stopwatch and return the time in milliseconds
  */
 function stopStopwatch() {
-    running = false;
     if (startTime > 0) {
         endTime = new Date().getTime();
         startTime = -1;
@@ -53,7 +51,6 @@ function showStopwatchTime() {
  * Pause the stopwatch interval
  */
 function pauseStopwatch() {
-    running = false;
     clearInterval(swinterval);
 }
 
@@ -61,7 +58,6 @@ function pauseStopwatch() {
  * Resume the stopwatch interval
  */
 function resumeStopwatch() {
-    running = true;
     startStopwatch(swhtmlElement);
 }
 

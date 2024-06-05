@@ -3,7 +3,7 @@ totalSpeed = 0;
 numOfSpeedData = 0;
 currentSpeed = -1;
 htmlElement = null;
-running = false;
+interval = null;
 
 /* updateAverageSpeed
  * Update the average speed with the current speed on HTML element
@@ -35,9 +35,8 @@ function setCurrentSpeed(inputCurrentSpeed){
  * inputHTMLElement: the HTML element to display the average speed
  */
 function startAvgSpeed(inputHTMLElement){
-    running = true;
     htmlElement = inputHTMLElement;
-    const interval = setInterval(function() {
+    interval = setInterval(function() {
         updateAverageSpeed()
       }, 1000);
 }
@@ -46,7 +45,7 @@ function startAvgSpeed(inputHTMLElement){
  * Pause the average speed calculation interval
  */
 function pauseCurrentSpeed(){
-    running = false;
+    console.log("pauseCurrentSpeed");
     clearInterval(interval);
 }
 
@@ -54,7 +53,6 @@ function pauseCurrentSpeed(){
  * Resume the average speed calculation interval
  */
 function resumeCurrentSpeed(){
-    running = true;
     startAvgSpeed(htmlElement);
 }
 

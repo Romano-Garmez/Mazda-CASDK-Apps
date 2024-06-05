@@ -34,7 +34,6 @@ ase do not attempt to install this. You might
  */
 
 
-
 CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
     /**
@@ -237,8 +236,8 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         switch (eventId) {
 
             case "selectStart":
-                resetAverageSpeed();
-                resetStopwatch();
+                pauseCurrentSpeed();
+                pauseStopwatch();
                 break;
         }
 
@@ -372,5 +371,6 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.showSection();
 
     },
+
 
 }));
