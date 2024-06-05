@@ -202,7 +202,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.avgSpeedLabel = $("<span id=\"AVGSpeedLabel\"/>").appendTo(this.canvas);
 
         this.avgSpeedBox.html("60");
-        
+
         this.avgSpeedLabel.html("AVG MPH");
 
         startAvgSpeed(this.avgSpeedBox);
@@ -216,6 +216,8 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         // 2) Finally show the first section
         this.showSection();
+
+        this.paused = false;
     },
 
 
@@ -236,8 +238,16 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         switch (eventId) {
 
             case "selectStart":
-                pauseCurrentSpeed();
-                pauseStopwatch();
+
+                if (this.paused == false) {
+                    pauseCurrentSpeed();
+                    pauseStopwatch();
+                    this.paused = true;
+                } else {
+                    resumeCurrentSpeed();
+                    resumeStopwatch();
+                    this.paused = false;
+                }
                 break;
         }
 
@@ -249,7 +259,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
  * Called when the region is changed
  */
 
-    onRegionChange: function (region) {
+    onRegionChange: function () {
 
         // let's just refresh our current section
         this.showSection(this.currentSectionIndex);
@@ -307,9 +317,9 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         }.bind(this));
 
 
-        
-         
-         
+
+
+
     },
 
     /**
@@ -350,7 +360,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         //update average speed on display
         setCurrentSpeed(speed);
 
-        
+
 
 
     },

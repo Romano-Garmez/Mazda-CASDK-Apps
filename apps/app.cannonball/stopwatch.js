@@ -11,7 +11,19 @@ function startStopwatch(inputHTMLElement) {
     swhtmlElement = inputHTMLElement;
     startTime = new Date().getTime();
 
-     swinterval = setInterval(function () {
+    swinterval = setInterval(function () {
+        showStopwatchTime()
+    }, 1000);
+}
+
+/* startStopwatchNoReset
+    * Start the stopwatch with an interval of 1 second without resetting the time
+    * inputHTMLElement: the HTML element to display the stopwatch
+    */
+function startStopwatchNoReset(inputHTMLElement) {
+    swhtmlElement = inputHTMLElement;
+
+    swinterval = setInterval(function () {
         showStopwatchTime()
     }, 1000);
 }
@@ -58,7 +70,7 @@ function pauseStopwatch() {
  * Resume the stopwatch interval
  */
 function resumeStopwatch() {
-    startStopwatch(swhtmlElement);
+    startStopwatchNoReset(swhtmlElement);
 }
 
 /* resetStopwatch
