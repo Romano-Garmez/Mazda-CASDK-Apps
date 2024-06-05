@@ -2,6 +2,9 @@ startTime = -1;
 endTime = -1;
 swhtmlElement = null;
 swinterval = null;
+timeOfReset = 0;
+resetTime = -1;
+resetEndTime = -1;
 
 /* startStopwatch
  * Start the stopwatch with an interval of 1 second
@@ -45,7 +48,7 @@ function stopStopwatch() {
  */
 function showStopwatchTime() {
     if (startTime > 0) {
-        duration = (new Date().getTime() - startTime);
+        duration = (new Date().getTime() - startTime - timeOfReset);
         seconds = Math.floor((duration / 1000) % 60),
             minutes = Math.floor((duration / (1000 * 60)) % 60),
             hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
@@ -63,6 +66,7 @@ function showStopwatchTime() {
  * Pause the stopwatch interval
  */
 function pauseStopwatch() {
+    resetTime = new Date().getTime();
     clearInterval(swinterval);
 }
 
@@ -70,6 +74,8 @@ function pauseStopwatch() {
  * Resume the stopwatch interval
  */
 function resumeStopwatch() {
+    resetEndTime = new Date().getTime();
+    timeOfReset = Math.floor((resetEndTime - resetTime));
     startStopwatchNoReset(swhtmlElement);
 }
 
