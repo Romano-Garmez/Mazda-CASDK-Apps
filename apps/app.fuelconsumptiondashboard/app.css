@@ -1,7 +1,7 @@
-[app="app.romansimpledashboard"] {
+[app="app.fuelconsumptiondashboard"] {
 	background:rgba(0, 0, 0, 0.5);
 }
-[app="app.romansimpledashboard"] #redBox {
+[app="app.fuelconsumptiondashboard"] #redBox {
   background: rgba(255, 0, 0, 0.75);
   position: absolute;
   top: 10px;
@@ -15,7 +15,7 @@
   border-radius: 25px;
   color: rgba(255, 255, 255, 0.9);
 }
-[app="app.romansimpledashboard"] span {
+[app="app.fuelconsumptiondashboard"] span {
   position: absolute;
   bottom: 120px;
   left: 0;
@@ -27,10 +27,10 @@
   display: block;
   text-transform: uppercase;
 }
-[app="app.romansimpledashboard"] #unitLabel {
+[app="app.fuelconsumptiondashboard"] #unitLabel {
   bottom: 60px;
 }
-[app="app.romansimpledashboard"] #fuelLevel {
+[app="app.fuelconsumptiondashboard"] #fuelLevel {
   position: absolute;
   top: 400px;
   left: 0px;

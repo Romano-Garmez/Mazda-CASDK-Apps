@@ -34,7 +34,7 @@ ase do not attempt to install this. You might
  */
 
 
-CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplication({
+CustomApplicationsHandler.register("app.fuelconsumptiondashboard", new CustomApplication({
 
     /**
      * (require)
@@ -252,24 +252,24 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
             // Bigs 107.3 fluid oz
             // 1.19291705499 bigs per gallon
             // 7.99998 furlongs per miles
-            { name: 'Average Bigs Consumption', unit: 'Bigs per Furlong' , lengthPerMile: 7.99998, volumePerGallon: 1.19291705499},
+            { name: 'Average Bigs Consumption', unit: 'Furlongs per Big' , lengthPerMile: 7.99998, volumePerGallon: 1.19291705499},
 
             // 320 rods per mile
 
-            { name: 'Average Kilobigs Consumption', unit: 'Kilobigs per Rod' , lengthPerMile: 320, volumePerGallon: 1192.91705499},
+            { name: 'Average Kilobigs Consumption', unit: 'Rods per Kilobig' , lengthPerMile: 320, volumePerGallon: 1192.91705499},
         
             // barrel is 42 gallons
             // 17.6 football fields per mile
-            { name: 'Average Barrels Consumption', unit: 'Barrels per Football Field' , lengthPerMile: 17.6, volumePerGallon: 42},
+            { name: 'Average Barrels Consumption', unit: 'Football Fields per Barrel' , lengthPerMile: 17.6, volumePerGallon: 42},
         
             // 85.3333333 shots per gallon
             // horse length is 8 feet
             // 660 horse lengths per mile
-            { name: 'Average Shots Consumption', unit: 'Shots per Horse Length' , lengthPerMile: 660, volumePerGallon: 85.3333333},
+            { name: 'Average Shots Consumption', unit: 'Horse Lengths per Shot' , lengthPerMile: 660, volumePerGallon: 85.3333333},
 
             // 1/660000 olymic swimming pools per gallon
             // 1/3959 earth radius per mile
-            { name: 'Average Pool Consumption', unit: 'Olymic Pools per Earth Radius' , lengthPerMile: 0.00025258903, volumePerGallon: 0.00000151515},
+            { name: 'Average Pool Consumption', unit: 'Earth Radius per Olympic Pool' , lengthPerMile: 0.00025258903, volumePerGallon: 0.00000151515},
         ];
 
         // let's actually execute the subscriptions
@@ -312,7 +312,7 @@ CustomApplicationsHandler.register("app.romansimpledashboard", new CustomApplica
         var section = this.sections[sectionIndex],
 
             // Let's get also the value and name
-            value = Math.round(((section.value * section.lengthPerMile / section.volumePerGallon)/4.25531914894) * 100) / 100  || 0;
+            value = Math.round(((section.value * (section.lengthPerMile / section.volumePerGallon))/4.25531914894) * 100) / 100  || 0;
             name = section.name;
             unit = section.unit;
 
