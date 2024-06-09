@@ -11,7 +11,7 @@ Includes:
 - web browser embed app (edit the link in the js file)
 - revised and fixed CASDK apps I found online:
   - multidash now loads
-  - 2048 loads in simulator, not in car yet (WIP)
+  - 2048 works, but is missing animations
 - More to be included later
 
 ![accelTimer](/screenshots/accelTimer.png)
