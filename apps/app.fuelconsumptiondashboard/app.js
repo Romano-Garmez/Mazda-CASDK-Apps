@@ -256,11 +256,11 @@ CustomApplicationsHandler.register("app.fuelconsumptiondashboard", new CustomApp
 
             // 320 rods per mile
 
-            { name: 'Average Kilobigs Consumption', unit: 'Rods per Kilobig' , lengthPerMile: 320, volumePerGallon: 1192.91705499},
+            { name: 'Average Kilobigs Consumption', unit: 'City Blocks per Kilobig' , lengthPerMile: 320, volumePerGallon: 13.2},
         
-            // barrel is 42 gallons
+            // 1/42 barrels per gallon
             // 17.6 football fields per mile
-            { name: 'Average Barrels Consumption', unit: 'Football Fields per Barrel' , lengthPerMile: 17.6, volumePerGallon: 42},
+            { name: 'Average Barrels Consumption', unit: 'Football Fields per Barrel' , lengthPerMile: 17.6, volumePerGallon: 0.0238095238},
         
             // 85.3333333 shots per gallon
             // horse length is 8 feet
