@@ -199,7 +199,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.pausedLabel = $("<div id=\"pausedLabel\"/>").appendTo(this.canvas);
 
-        this.restartButton = $("<button id=\"restartButton\">Restart</button>").appendTo(this.canvas);
+        this.resetButton = $("<button id=\"resetButton\">reset</button>").appendTo(this.canvas);
 
         this.timingLabel.html("0:00:00");
 
@@ -230,10 +230,10 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
 
 
-        this.restartButton.on('click', function () {
-            console.log('Restart button was clicked!');
+        this.resetButton.on('click', function () {
+            console.log('reset button was clicked!');
             // Your code to handle the button click event
-            console.log('Restart function executed!');
+            console.log('reset function executed!');
 
             pauseCurrentSpeed();
             pauseStopwatch();

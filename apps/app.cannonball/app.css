@@ -86,11 +86,11 @@
   background: rgba(0, 0, 0, 0.75);
 }
 
-[app="app.cannonball"] #restartButton {
+[app="app.cannonball"] #resetButton {
   border-radius: 25px;
   position: absolute;
   bottom: 325px;
-  left: 685px;
+  left: 705px;
   top: 15px;
   font-size: 15px;
   color: rgba(255, 255, 255, 0.95);
