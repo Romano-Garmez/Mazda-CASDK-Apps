@@ -63,9 +63,6 @@ function resetAverageSpeed(){
     avgSpeed = -1;
     totalSpeed = 0;
     numOfSpeedData = 0;
-    clearInterval(interval);
-
+    
     htmlElement.html("0");
-
-    startAvgSpeed(htmlElement);
 }

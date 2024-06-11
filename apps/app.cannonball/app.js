@@ -191,19 +191,28 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.timingLabel = $("<div id=\"timingbox\"/>").appendTo(this.canvas);
 
-        this.timingLabel.html("0:00:00");
-
         this.rpmLabel = $("<div id=\"RPMbox\"/>").appendTo(this.canvas);
-
-        this.rpmLabel.html("0 RPM");
 
         this.avgSpeedBox = $("<div id=\"AVGSpeedbox\"/>").appendTo(this.canvas);
 
         this.avgSpeedLabel = $("<span id=\"AVGSpeedLabel\"/>").appendTo(this.canvas);
 
+        this.pausedLabel = $("<div id=\"pausedLabel\"/>").appendTo(this.canvas);
+
+        this.restartButton = $("<button id=\"restartButton\">Restart</button>").appendTo(this.canvas);
+
+        this.timingLabel.html("0:00:00");
+
+        this.rpmLabel.html("0 RPM");
+
         this.avgSpeedBox.html("60");
 
         this.avgSpeedLabel.html("AVG MPH");
+
+        this.pausedLabel.html("PAUSED");
+
+        this.pausedLabel.hide();
+
 
         startAvgSpeed(this.avgSpeedBox);
 
@@ -218,6 +227,22 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.showSection();
 
         this.paused = false;
+
+
+
+        this.restartButton.on('click', function () {
+            console.log('Restart button was clicked!');
+            // Your code to handle the button click event
+            console.log('Restart function executed!');
+
+            pauseCurrentSpeed();
+            pauseStopwatch();
+            resetAverageSpeed();
+            resetStopwatch();
+            resumeCurrentSpeed();
+            resumeStopwatch();
+        });
+
     },
 
 
@@ -243,10 +268,12 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
                     pauseCurrentSpeed();
                     pauseStopwatch();
                     this.paused = true;
+                    this.pausedLabel.show()
                 } else {
                     resumeCurrentSpeed();
                     resumeStopwatch();
                     this.paused = false;
+                    this.pausedLabel.hide()
                 }
                 break;
         }

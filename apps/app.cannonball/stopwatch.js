@@ -74,9 +74,15 @@ function pauseStopwatch() {
  * Resume the stopwatch interval
  */
 function resumeStopwatch() {
+
+    if (resetTime > 0) {
     resetEndTime = new Date().getTime();
     timeOfReset = Math.floor((resetEndTime - resetTime));
     startStopwatchNoReset(swhtmlElement);
+    }
+    else {
+        startStopwatch(swhtmlElement);
+    }
 }
 
 /* resetStopwatch
@@ -85,9 +91,9 @@ function resumeStopwatch() {
 function resetStopwatch() {
     startTime = -1;
     endTime = -1;
-    clearInterval(swinterval);
+    timeOfReset = 0;
+    resetTime = -1;
+    resetEndTime = -1;
 
     swhtmlElement.html("00:00:00");
-
-    startStopwatch(swhtmlElement);
 }
