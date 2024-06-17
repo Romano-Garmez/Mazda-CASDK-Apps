@@ -213,11 +213,6 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.pausedLabel.hide();
 
-
-        startAvgSpeed(this.avgSpeedBox);
-
-        startStopwatch(this.timingLabel);
-
         // now let's get our data in place
 
         // 1) create our sections by calling our application specific method
@@ -228,10 +223,10 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.paused = false;
 
+        this.running = false;
 
 
         this.resetButton.on('click', function () {
-            console.log('reset button was clicked!');
             // Your code to handle the button click event
             console.log('reset function executed!');
 
@@ -239,12 +234,20 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
             pauseStopwatch();
             resetAverageSpeed();
             resetStopwatch();
-            resumeCurrentSpeed();
+            startAvgSpeed(this.avgSpeedBox);
             resumeStopwatch();
         });
 
     },
 
+    focused: function () {
+        // make sure not to start any calculations until the app is opened for the first time
+        if (this.running == false) {
+            startAvgSpeed(this.avgSpeedBox);
+            startStopwatch(this.timingLabel);
+        }
+        this.running = true;
+    },
 
     /***
      *** Events
@@ -270,7 +273,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
                     this.paused = true;
                     this.pausedLabel.show()
                 } else {
-                    resumeCurrentSpeed();
+                    startAvgSpeed(this.avgSpeedBox);
                     resumeStopwatch();
                     this.paused = false;
                     this.pausedLabel.hide()
@@ -386,9 +389,6 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         //update average speed on display
         setCurrentSpeed(speed);
-
-
-
 
     },
 

@@ -49,12 +49,6 @@ function pauseCurrentSpeed(){
     clearInterval(interval);
 }
 
-/* resumeCurrentSpeed
- * Resume the average speed calculation interval
- */
-function resumeCurrentSpeed(){
-    startAvgSpeed(htmlElement);
-}
 
 /* resetAverageSpeed
  * Reset the average speed calculation and all data
