@@ -95,7 +95,13 @@ CustomApplicationsHandler.register("app.clock", new CustomApplication({
 					hands.filter('.minute').css({transform: 'rotate(' + minute_as_degree + 'deg)' })
 					hands.filter('.second').css({transform: 'rotate(' + second_as_degree + 'deg)' })
 					
-					var timeText = (curdate.getHours() ) + ":" + (curdate.getMinutes() < 10 ? '0' + curdate.getMinutes() : curdate.getMinutes());
+					if (curdate.getHours() > 12){
+						curdate12hr = curdate.getHours() - 12;
+					} else{
+						curdate12hr = curdate.getHours();
+					}
+					 
+					var timeText = (curdate12hr ) + ":" + (curdate.getMinutes() < 10 ? '0' + curdate.getMinutes() : curdate.getMinutes());
 					$('.timedigital').text(timeText);
 				}, 100 );
 	},

@@ -139,7 +139,7 @@ CustomApplicationsHandler.register("app.snake", new CustomApplication({
 
   created: function() {
     // speed restriction
-    this.speedRestrict = true;
+    this.speedRestrict = false;
 
     // score for this drive
     this.__highscore = 0; //this.get("highscore");
