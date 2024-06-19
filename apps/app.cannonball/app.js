@@ -201,11 +201,11 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.resetButton = $("<button id=\"resetButton\">reset</button>").appendTo(this.canvas);
 
-        this.timingLabel.html("0:00:00");
+        this.timingLabel.html("00:00:00");
 
         this.rpmLabel.html("0 RPM");
 
-        this.avgSpeedBox.html("60");
+        this.avgSpeedBox.html("0");
 
         this.avgSpeedLabel.html("AVG MPH");
 
@@ -224,7 +224,6 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.paused = false;
 
         this.running = false;
-
 
         this.resetButton.on('click', function () {
             // Your code to handle the button click event
