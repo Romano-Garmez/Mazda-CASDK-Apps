@@ -292,7 +292,6 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         // let's just refresh our current section
         this.showSection(this.currentSectionIndex);
-
     },
 
     /***

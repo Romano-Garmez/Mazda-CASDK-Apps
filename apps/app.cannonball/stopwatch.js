@@ -1,10 +1,10 @@
 startTime = -1;
 endTime = -1;
-swhtmlElement = null;
-swinterval;
 timeOfReset = 0;
 resetTime = -1;
 resetEndTime = -1;
+swhtmlElement = null;
+swinterval;
 
 /* startStopwatch
  * Start the stopwatch with an interval of 1 second
@@ -16,6 +16,7 @@ function startStopwatch(inputHTMLElement) {
     }catch (e) {
         console.log("No interval to clear");
     }
+    swinterval = null
 
     swhtmlElement = inputHTMLElement;
     startTime = new Date().getTime();
@@ -35,6 +36,8 @@ function startStopwatchNoReset(inputHTMLElement) {
     }catch (e) {
         console.log("No interval to clear");
     }
+    swinterval = null
+
 
     swhtmlElement = inputHTMLElement;
 
