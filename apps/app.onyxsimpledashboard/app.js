@@ -205,8 +205,8 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         this.recentStarbucksLocations = [0, 0, 0];
         this.recentStarbucksTimes = [0, 0, 0];
 
-        this.recentMcdonalds = new Map();
-
+        this.recentMcdonaldsLocations = [0, 0, 0];
+        this.recentMcdonaldsTimes = [0, 0, 0];
         // the position of the car
         // this is updated by the subscriptioins
         this.gpsPosition = { lat: 0, long: 0 }
@@ -337,7 +337,7 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
 
 
         nearestMcdonalds = getNearestCoord(mcdonaldsGPSCoords, this.gpsPosition)
-        this.addToNearbyCount(nearestMcdonalds, this.recentMcdonalds, this.mcdonaldsPassed, 'mcdonaldsPassed')
+        this.addToNearbyCount(nearestMcdonalds, this.recentMcdonaldsLocations, this.recentMcdonaldsTimes, this.mcdonaldsPassed, 'mcdonaldsPassed')
 
         this.mcdonaldsDiv.empty();
         this.mcdonaldsDiv.append('nearest mcdonalds is at: ' + coodinateToString(nearestMcdonalds.coord) + '<br>Distance: ' + nearestMcdonalds.distance + '<br> count: ' + this.mcdonaldsPassed)
