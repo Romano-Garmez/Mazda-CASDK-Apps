@@ -201,8 +201,10 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         }
 
 
+        //this is so, so bad
+        this.recentStarbucksLocations = [0, 0, 0];
+        this.recentStarbucksTimes = [0, 0, 0];
 
-        this.recentStarbucks = new Map();
         this.recentMcdonalds = new Map();
 
         // the position of the car
@@ -215,9 +217,9 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         this.holder = $("<div/>", { class: 'stuffGoesHere' }).appendTo(this.canvas)
         this.theDiv = $('<div id = "info" class = "container"/>').appendTo(this.holder);
 
-        this.locDiv =  $("<div/>", { class: 'box location' }).appendTo(this.theDiv)
+        this.locDiv = $("<div/>", { class: 'box location' }).appendTo(this.theDiv)
 
-        this.starbucksDiv =  $("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv);
+        this.starbucksDiv = $("<div/>", { class: 'box starbucks' }).appendTo(this.theDiv);
 
         this.mcdonaldsDiv = $("<div/>", { class: 'box mcdonalds' }).appendTo(this.theDiv);
 
@@ -314,7 +316,7 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
     },
 
     updateDisplay: function () {
-        
+
         /**
          * TODO: make it so we are not just deleting and remaking the entire thing
          * should probably make <p> children of these divs and change the text within them
@@ -327,8 +329,8 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
 
 
         nearestStarbucks = getNearestCoord(starbucksGPScoords, this.gpsPosition)
-        this.addToNearbyCount(nearestStarbucks, this.recentStarbucks, this.starbucksPassed, 'starbucksPassed')
-       
+        this.addToNearbyCount(nearestStarbucks, this.recentStarbucksLocations, this.recentStarbucksTimes, this.starbucksPassed, 'starbucksPassed')
+
         this.starbucksDiv.empty();
         this.starbucksDiv.append('nearest starbucks is at: ' + coodinateToString(nearestStarbucks.coord) + '<br>Distance: ' + nearestStarbucks.distance + '<br> count: ' + this.starbucksPassed)
 
@@ -338,8 +340,8 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
         this.addToNearbyCount(nearestMcdonalds, this.recentMcdonalds, this.mcdonaldsPassed, 'mcdonaldsPassed')
 
         this.mcdonaldsDiv.empty();
-        this.mcdonaldsDiv.append('nearest mcdonalds is at: ' + coodinateToString(nearestMcdonalds.coord) + '<br>Distance: ' + nearestMcdonalds.distance+ '<br> count: ' + this.mcdonaldsPassed)
-        
+        this.mcdonaldsDiv.append('nearest mcdonalds is at: ' + coodinateToString(nearestMcdonalds.coord) + '<br>Distance: ' + nearestMcdonalds.distance + '<br> count: ' + this.mcdonaldsPassed)
+
 
 
         this.overallDiv.empty();
@@ -347,8 +349,8 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
 
     },
 
-    addToNearbyCount: function(nearestEstablishment, recentEstablishment, establishmentPassed, storageName){
-        
+    addToNearbyCount: function (nearestEstablishment, recentEstablishmentLocations, recentEstablishmentTimes, establishmentPassed, storageName) {
+
 
         //TODO: a long car trip will accumulate memory of past starbucks/mcdonanalds, fix.
 
@@ -356,25 +358,42 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
 
         if (nearestEstablishment.distance < this.passedRange) {
             //if we have an entry for it we will check it, if not make a new one and add to the count.
-            if (recentEstablishment.has(nearestEstablishment.coord.long)) {
+            if (recentEstablishmentLocations.indexOf(nearestEstablishment.coord.long) != -1) {
 
                 // check how long ago this establishment was logged
-                lastAccessed = recentEstablishment.get(nearestEstablishment.coord.long)
+                idxOfThing = recentEstablishmentTimes.indexOf(nearestEstablishment.coord.long);
+                lastAccessed = recentEstablishmentTimes[idxOfThing]
                 msDiff = Math.abs(lastAccessed - new Date())
- 
+
                 // if it was less than the timeout(seconds) ago, just update it
                 if (msDiff < 1000 * this.passedTimeout) {
-                    recentEstablishment.set(nearestEstablishment.coord.long, new Date())
+                    recentEstablishmentLocations[idxOfThing] = nearestEstablishment.coord.long;
+                    recentEstablishmentTimes[idxOfThing] = new Date();
                 } else {
                     // if it was longer than that, update it but also increment the count
-                    recentEstablishment.set(nearestEstablishment.coord.long, new Date())
+                    recentEstablishmentLocations[idxOfThing] = nearestEstablishment.coord.long;
+                    recentEstablishmentTimes[idxOfThing] = new Date();
                     establishmentPassed++;
                     //save updated count
-                    this.set(storageName, establishmentPassed )
+                    this.set(storageName, establishmentPassed)
                 }
             } else {
                 // if there is no entry, make one and increment count
-                recentEstablishment.set(nearestEstablishment.coord.long, new Date())
+
+                //this is so so so so bad
+                recentEstablishmentLocations[0] = recentEstablishmentLocations[1]
+                recentEstablishmentLocations[1] = recentEstablishmentLocations[2]
+                recentEstablishmentLocations[2] = nearestEstablishment.coord.long;
+
+                recentEstablishmentTimes[0] = recentEstablishmentTimes[1]
+                recentEstablishmentTimes[1] = recentEstablishmentTimes[2]
+                recentEstablishmentTimes[2] = new Date();
+
+
+
+
+
+
                 establishmentPassed++;
                 //save updated count
                 this.set(storageName, establishmentPassed)
@@ -382,8 +401,10 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
             }
 
         }
-        
+
     }
+
+
 
 
 
