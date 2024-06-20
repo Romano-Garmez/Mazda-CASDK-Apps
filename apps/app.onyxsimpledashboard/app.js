@@ -352,7 +352,7 @@ CustomApplicationsHandler.register("app.onyxsimpledashboard", new CustomApplicat
 
         //TODO: a long car trip will accumulate memory of past starbucks/mcdonanalds, fix.
 
-        //TODO: these if statements could be written in a better way
+        //TODO: change nesting to early return
 
         if (nearestEstablishment.distance < this.passedRange) {
             //if we have an entry for it we will check it, if not make a new one and add to the count.
