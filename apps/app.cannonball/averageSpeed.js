@@ -18,8 +18,6 @@ function updateAverageSpeed() {
         avgSpeed = totalSpeed / numOfSpeedData;
     }
     htmlElement.html(Math.round(avgSpeed * 100) / 100);
-
-    return avgSpeed;
 }
 
 /* setCurrentSpeed
@@ -42,7 +40,6 @@ function setUpAvgSpeed(inputHTMLElement) {
     }
 
     interval = null;
-
     htmlElement = inputHTMLElement;
 }
 
@@ -54,7 +51,6 @@ function startAvgSpeed(inputHTMLElement) {
     interval = setInterval(function () {
         updateAverageSpeed()
     }, 1000);
-
 }
 
 /* pauseCurrentSpeed

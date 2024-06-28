@@ -71,11 +71,11 @@
   text-transform: uppercase;
 }
 
-[app="app.cannonball"] #pausedLabel {
+[app="app.cannonball"] #messageBox {
   position: absolute;
   bottom: 150px;
-  left: 200px;
-  right: 200px;
+  left: 100px;
+  right: 100px;
   top: 150px;
   font-size: 100px;
   color: rgba(255, 255, 255, 0.95);

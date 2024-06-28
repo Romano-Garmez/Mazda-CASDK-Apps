@@ -90,11 +90,11 @@ function resumeStopwatch() {
     console.log("resumeStopwatch called")
     if (resetTime > 0) {
         resetEndTime = new Date().getTime();
-        timeOfReset = Math.floor((resetEndTime - resetTime));
+        timeOfReset += Math.floor((resetEndTime - resetTime));
         startStopwatchNoReset();
     }
     else {
-        startStopwatch(swhtmlElement);
+        startStopwatch();
     }
 }
 

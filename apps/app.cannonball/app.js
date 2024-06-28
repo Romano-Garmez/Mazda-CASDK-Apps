@@ -197,7 +197,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.avgSpeedLabel = $("<span id=\"AVGSpeedLabel\"/>").appendTo(this.canvas);
 
-        this.pausedLabel = $("<div id=\"pausedLabel\"/>").appendTo(this.canvas);
+        this.messageBox = $("<div id=\"messageBox\"/>").appendTo(this.canvas);
 
         this.resetButton = $("<button id=\"resetButton\">reset</button>").appendTo(this.canvas);
 
@@ -209,9 +209,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.avgSpeedLabel.html("AVG MPH");
 
-        this.pausedLabel.html("PAUSED");
-
-        this.pausedLabel.hide();
+        this.messageBox.html("Press Dial");
 
         // now let's get our data in place
 
@@ -237,7 +235,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
             pauseStopwatch();
             resetAverageSpeed();
             resetStopwatch();
-            startAvgSpeed(this.avgSpeedBox);
+            startAvgSpeed();
             resumeStopwatch();
         });
 
@@ -269,6 +267,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
                     startAvgSpeed();
                     startStopwatch();
                     this.running = true;
+                    this.messageBox.hide();
                 } else {
 
                     if (this.paused == false) {
@@ -276,13 +275,14 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
                         pauseCurrentSpeed();
                         pauseStopwatch();
                         this.paused = true;
-                        this.pausedLabel.show()
+                        this.messageBox.html("PAUSED")
+                        this.messageBox.show()
                     } else {
                         console.log("attempting to resume")
                         startAvgSpeed();
                         resumeStopwatch();
                         this.paused = false;
-                        this.pausedLabel.hide()
+                        this.messageBox.hide()
                     }
                 }
                 break;
