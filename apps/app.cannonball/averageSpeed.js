@@ -14,8 +14,8 @@ function updateAverageSpeed() {
         numOfSpeedData = 1;
     } else {
         totalSpeed += currentSpeed;
-        avgSpeed = totalSpeed / numOfSpeedData;
         numOfSpeedData++;
+        avgSpeed = totalSpeed / numOfSpeedData;
     }
     htmlElement.html(Math.round(avgSpeed * 100) / 100);
 
@@ -30,11 +30,11 @@ function setCurrentSpeed(inputCurrentSpeed) {
     currentSpeed = inputCurrentSpeed;
 }
 
-/* startAvgSpeed
- * Start the average speed calculation with an interval of 1 second
- * inputHTMLElement: the HTML element to display the average speed
- */
-function startAvgSpeed(inputHTMLElement) {
+/* setUpAvgSpeed
+    * Set up the average speed calculation with an HTML element
+    * inputHTMLElement: the HTML element to display the average speed
+*/
+function setUpAvgSpeed(inputHTMLElement) {
     try {
         clearInterval(interval);
     } catch (e) {
@@ -44,11 +44,17 @@ function startAvgSpeed(inputHTMLElement) {
     interval = null;
 
     htmlElement = inputHTMLElement;
+}
 
+/* startAvgSpeed
+ * Start the average speed calculation with an interval of 1 second
+ * inputHTMLElement: the HTML element to display the average speed
+ */
+function startAvgSpeed(inputHTMLElement) {
     interval = setInterval(function () {
         updateAverageSpeed()
     }, 1000);
-    
+
 }
 
 /* pauseCurrentSpeed
@@ -57,6 +63,7 @@ function startAvgSpeed(inputHTMLElement) {
 function pauseCurrentSpeed() {
     console.log("pauseCurrentSpeed");
     clearInterval(interval);
+    interval = null;
 }
 
 

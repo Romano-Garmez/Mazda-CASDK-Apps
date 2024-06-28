@@ -6,11 +6,11 @@ resetEndTime = -1;
 swhtmlElement = null;
 swinterval;
 
-/* startStopwatch
- * Start the stopwatch with an interval of 1 second
- * inputHTMLElement: the HTML element to display the stopwatch
- */
-function startStopwatch(inputHTMLElement) {
+/* setUpStopwatch
+    * Set up the stopwatch with an HTML element
+    * inputHTMLElement: the HTML element to display the stopwatch
+    */
+function setUpStopwatch(inputHTMLElement) {
     try {
         clearInterval(swinterval);
     } catch (e) {
@@ -19,6 +19,12 @@ function startStopwatch(inputHTMLElement) {
     swinterval = null
 
     swhtmlElement = inputHTMLElement;
+}
+
+/* startStopwatch
+ * Start the stopwatch with an interval of 1 second
+ */
+function startStopwatch() {
     startTime = new Date().getTime();
 
     swinterval = setInterval(function () {
@@ -28,16 +34,8 @@ function startStopwatch(inputHTMLElement) {
 
 /* startStopwatchNoReset
     * Start the stopwatch with an interval of 1 second without resetting the time
-    * inputHTMLElement: the HTML element to display the stopwatch
     */
 function startStopwatchNoReset() {
-    try {
-        clearInterval(swinterval);
-    } catch (e) {
-        console.log("No interval to clear");
-    }
-    swinterval = null
-
     swinterval = setInterval(function () {
         showStopwatchTime()
     }, 1000);
@@ -81,6 +79,8 @@ function showStopwatchTime() {
 function pauseStopwatch() {
     resetTime = new Date().getTime();
     clearInterval(swinterval);
+
+    swinterval = null;
 }
 
 /* resumeStopwatch

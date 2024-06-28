@@ -225,6 +225,10 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.running = false;
 
+        setUpAvgSpeed(this.avgSpeedBox);
+
+        setUpStopwatch(this.timingLabel);
+
         this.resetButton.on('click', function () {
             // Your code to handle the button click event
             console.log('reset function executed!');
@@ -262,8 +266,8 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
                 //if the stopwatch and avg speed have never been started before, start them.
                 if (this.running == false) {
-                    startAvgSpeed(this.avgSpeedBox);
-                    startStopwatch(this.timingLabel);
+                    startAvgSpeed();
+                    startStopwatch();
                     this.running = true;
                 } else {
 
@@ -275,7 +279,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
                         this.pausedLabel.show()
                     } else {
                         console.log("attempting to resume")
-                        startAvgSpeed(this.avgSpeedBox);
+                        startAvgSpeed();
                         resumeStopwatch();
                         this.paused = false;
                         this.pausedLabel.hide()
