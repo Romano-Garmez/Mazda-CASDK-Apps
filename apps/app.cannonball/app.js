@@ -240,12 +240,6 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
     },
 
     focused: function () {
-        // make sure not to start any calculations until the app is opened for the first time
-        if (this.running == false) {
-            startAvgSpeed(this.avgSpeedBox);
-            startStopwatch(this.timingLabel);
-        }
-        this.running = true;
     },
 
     /***
@@ -266,16 +260,26 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
             case "selectStart":
 
-                if (this.paused == false) {
-                    pauseCurrentSpeed();
-                    pauseStopwatch();
-                    this.paused = true;
-                    this.pausedLabel.show()
-                } else {
+                //if the stopwatch and avg speed have never been started before, start them.
+                if (this.running == false) {
                     startAvgSpeed(this.avgSpeedBox);
-                    resumeStopwatch();
-                    this.paused = false;
-                    this.pausedLabel.hide()
+                    startStopwatch(this.timingLabel);
+                    this.running = true;
+                } else {
+
+                    if (this.paused == false) {
+                        console.log("attempting to pause")
+                        pauseCurrentSpeed();
+                        pauseStopwatch();
+                        this.paused = true;
+                        this.pausedLabel.show()
+                    } else {
+                        console.log("attempting to resume")
+                        startAvgSpeed(this.avgSpeedBox);
+                        resumeStopwatch();
+                        this.paused = false;
+                        this.pausedLabel.hide()
+                    }
                 }
                 break;
         }
