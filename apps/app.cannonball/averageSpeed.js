@@ -33,12 +33,6 @@ function setCurrentSpeed(inputCurrentSpeed) {
     * inputHTMLElement: the HTML element to display the average speed
 */
 function setUpAvgSpeed(inputHTMLElement) {
-    try {
-        clearInterval(interval);
-    } catch (e) {
-        console.log("No interval to clear");
-    }
-
     interval = null;
     htmlElement = inputHTMLElement;
 }

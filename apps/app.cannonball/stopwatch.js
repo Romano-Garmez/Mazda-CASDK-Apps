@@ -11,13 +11,7 @@ swinterval;
     * inputHTMLElement: the HTML element to display the stopwatch
     */
 function setUpStopwatch(inputHTMLElement) {
-    try {
-        clearInterval(swinterval);
-    } catch (e) {
-        console.log("No interval to clear");
-    }
     swinterval = null
-
     swhtmlElement = inputHTMLElement;
 }
 
