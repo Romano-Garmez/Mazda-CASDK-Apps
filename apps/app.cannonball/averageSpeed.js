@@ -3,7 +3,7 @@ totalSpeed = 0;
 numOfSpeedData = 0;
 currentSpeed = -1;
 htmlElement = null;
-interval;
+interval = null;
 
 /* updateAverageSpeed
  * Update the average speed with the current speed on HTML element

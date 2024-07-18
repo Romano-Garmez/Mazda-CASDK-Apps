@@ -4,7 +4,7 @@ timeOfReset = 0;
 resetTime = -1;
 resetEndTime = -1;
 swhtmlElement = null;
-swinterval;
+swinterval = null;
 
 /* setUpStopwatch
     * Set up the stopwatch with an HTML element
