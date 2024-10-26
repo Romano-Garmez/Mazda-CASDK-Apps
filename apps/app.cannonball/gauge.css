@@ -210,3 +210,13 @@
   display: block;
   text-transform: uppercase;
 }
+
+[app="app.cannonball"] #fuelLevelGaugeFill {
+  top: 280px;
+  left: 560px;
+}
+
+[app="app.cannonball"] #fuelLevelGaugeNeedle {
+  top: 275px;
+  left: 670px;
+}

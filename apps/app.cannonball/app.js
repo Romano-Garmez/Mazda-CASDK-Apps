@@ -247,10 +247,12 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.timingGaugeLabel.html("Timing");
 
         this.fuelLevelGauge = $("<div id=\"fuelLevelGauge\"/>").appendTo(this.pageTwo);
+        this.fuelLevelGaugeFill = $("<div id=\"fuelLevelGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.fuelLevelGaugeNeedle = $("<div id=\"fuelLevelGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel = $("<span id=\"fuelLevelLabel\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel.html("Fuel Level");
 
-        setUpGauges(this.vehicleSpeedGaugeNeedle, this.engineRPMGaugeNeedle);
+        setUpGauges(this.vehicleSpeedGaugeNeedle, this.engineRPMGaugeNeedle, this.fuelLevelGaugeNeedle);
 
         // now let's get our data in place
 
@@ -473,7 +475,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.fuelLevelGauge.html(this.sections[4].value);
 
-        updateGauges(speed, this.sections[1].value);
+        updateGauges(speed, this.sections[1].value, this.sections[4].value);
     },
 
     /**
