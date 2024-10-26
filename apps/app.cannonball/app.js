@@ -224,12 +224,12 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.vehicleSpeedGauge = $("<div id=\"vehicleSpeedGauge\"/>").appendTo(this.pageTwo);
         this.vehicleSpeedGaugeFill = $("<div id=\"speedGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
         this.vehicleSpeedGaugeNeedle = $("<div id=\"speedGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
-        setUpGauges(this.vehicleSpeedGaugeNeedle);
-
         this.vehicleSpeedLabel = $("<span id=\"vehicleSpeedLabel\"/>").appendTo(this.pageTwo);
         this.vehicleSpeedLabel.html("Vehicle Speed");
 
         this.engineRPMGauge = $("<div id=\"engineRPMGauge\"/>").appendTo(this.pageTwo);
+        this.engineRPMGaugeFill = $("<div id=\"engineRPMGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.engineRPMGaugeNeedle = $("<div id=\"engineRPMGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.engineRPMLabel = $("<span id=\"engineRPMLabel\"/>").appendTo(this.pageTwo);
         this.engineRPMLabel.html("Engine RPM");
 
@@ -249,6 +249,8 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.fuelLevelGauge = $("<div id=\"fuelLevelGauge\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel = $("<span id=\"fuelLevelLabel\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel.html("Fuel Level");
+
+        setUpGauges(this.vehicleSpeedGaugeNeedle, this.engineRPMGaugeNeedle);
 
         // now let's get our data in place
 
@@ -453,7 +455,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.speedBox.html(speed);
         this.vehicleSpeedGauge.html(speed);
 
-        updateGauges(speed);
+        
 
         // update name on display
         this.speedLabel.html(this.regions[this.getRegion()].unit);
@@ -471,6 +473,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.fuelLevelGauge.html(this.sections[4].value);
 
+        updateGauges(speed, this.sections[1].value);
     },
 
     /**

@@ -73,6 +73,16 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
+[app="app.cannonball"] #engineRPMGaugeFill {
+  top: 280px;
+  left: 10px;
+}
+
+[app="app.cannonball"] #engineRPMGaugeNeedle {
+  top: 275px;
+  left: 120px;
+}
+
 [app="app.cannonball"] #engineRPMLabel {
   position: absolute;
   top: 430px;
