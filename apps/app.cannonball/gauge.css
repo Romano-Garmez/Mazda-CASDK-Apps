@@ -1,0 +1,168 @@
+[app="app.cannonball"] #vehicleSpeedGauge {
+  background-color: rebeccapurple;
+  position: absolute;
+  text-align: center;
+  width: 255px;
+  height: 230px;
+  top: 0px;
+  left: 0px;
+  line-height: 200px;
+  font-size: 50px;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[app="app.cannonball"] #vehicleSpeedLabel {
+  position: absolute;
+  top: 180px;
+  left: 0px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #engineRPMGauge {
+  background-color: rebeccapurple;
+  position: absolute;
+  text-align: center;
+  width: 255px;
+  height: 230px;
+  top: 250px;
+  line-height: 200px;
+  font-size: 50px;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[app="app.cannonball"] #engineRPMLabel {
+  position: absolute;
+  top: 430px;
+  left: 0px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #engineCoolantGauge {
+  background-color: rebeccapurple;
+  position: absolute;
+  text-align: center;
+  width: 255px;
+  height: 230px;
+  top: 0px;
+  left: 275px;
+  line-height: 200px;
+  font-size: 50px;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[app="app.cannonball"] #engineCoolantLabel {
+  position: absolute;
+  top: 180px;
+  left: 275px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #engineIntakeGauge {
+  background-color: rebeccapurple;
+  position: absolute;
+  text-align: center;
+  width: 255px;
+  height: 230px;
+  left: 275px;
+  top: 250px;
+  line-height: 200px;
+  font-size: 50px;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[app="app.cannonball"] #engineIntakeLabel {
+  position: absolute;
+  top: 430px;
+  left: 275px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #timingGauge {
+  background-color: rebeccapurple;
+  position: absolute;
+  text-align: center;
+  width: 255px;
+  height: 230px;
+  top: 0px;
+  left: 550px;
+  line-height: 200px;
+  font-size: 50px;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+
+}
+
+[app="app.cannonball"] #timingGaugeLabel {
+  position: absolute;
+  top: 180px;
+  left: 550px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+
+}
+
+[app="app.cannonball"] #fuelLevelGauge {
+  background-color: rebeccapurple;
+  position: absolute;
+  text-align: center;
+  width: 255px;
+  height: 230px;
+  left: 550px;
+  top: 250px;
+  line-height: 200px;
+  font-size: 50px;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[app="app.cannonball"] #fuelLevelLabel {
+  position: absolute;
+  top: 430px;
+  left: 550px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}

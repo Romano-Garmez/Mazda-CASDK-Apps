@@ -2,6 +2,16 @@
   background: rgba(0, 0, 0, 0.5);
 }
 
+[app="app.cannonball"] #pageOne {
+  width: 100%;
+  height: 100%;
+}
+
+[app="app.cannonball"] #pageTwo {
+  width: 100%;
+  height: 100%;
+}
+
 [app="app.cannonball"] div {
   position: absolute;
   text-align: center;
@@ -150,7 +160,7 @@
   left: 100px;
   right: 100px;
   top: 150px;
-  height:180px;
+  height: 180px;
   font-size: 100px;
   color: rgba(255, 255, 255, 0.95);
   text-align: center;
