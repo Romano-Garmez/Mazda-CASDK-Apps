@@ -50,7 +50,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
          * (js) defines javascript includes
          */
 
-        js: ['averageSpeed.js', 'stopwatch.js'],
+        js: ['averageSpeed.js', 'stopwatch.js', 'gauges.js'],
 
         /**
          * (css) defines css includes
@@ -182,7 +182,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         // let's build our interface
 
         this.pageOne = $("<div id=\"pageOne\"/>").appendTo(this.canvas);
-        
+
         // 1) create a value label that shows the current value of the selected section
 
         this.speedBox = $("<div id=\"speedBox\"/>").appendTo(this.pageOne);
@@ -323,7 +323,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
                 // we just cyle the sections here
 
                 this.currentPageIndex++;
-                if(this.currentPageIndex >= this.pages.length) this.currentPageIndex = 0;
+                if (this.currentPageIndex >= this.pages.length) this.currentPageIndex = 0;
 
                 this.showPage(this.currentPageIndex);
 
@@ -339,9 +339,9 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
                 // we just cyle the sections here
 
                 this.currentPageIndex--;
-                if(this.currentPageIndex < 0) this.currentPageIndex = this.pages.length -1;
+                if (this.currentPageIndex < 0) this.currentPageIndex = this.pages.length - 1;
 
-                 this.showPage(this.currentPageIndex);
+                this.showPage(this.currentPageIndex);
 
                 break;
         }
@@ -511,8 +511,8 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
     },
 
 
-    showPage: function (currentPageIndex){
-        if(currentPageIndex == 0){
+    showPage: function (currentPageIndex) {
+        if (currentPageIndex == 0) {
             this.pageOne.show();
             this.pageTwo.hide();
         } else {
