@@ -98,7 +98,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
          * (statusbar) Defines if the statusbar should be shown
          */
 
-        statusbar: true,
+        statusbar: false,
 
         /**
          * (statusbarIcon) defines the status bar icon
@@ -186,12 +186,12 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.speedBox = $("<div id=\"speedBox\"/>").appendTo(this.canvas);
 
         // 2) create a name label that shows the name of the selected section
-
         this.speedLabel = $("<span id=\"speedLabel\"/>").appendTo(this.canvas);
 
         this.timingLabel = $("<div id=\"timingbox\"/>").appendTo(this.canvas);
 
-        this.rpmLabel = $("<div id=\"RPMbox\"/>").appendTo(this.canvas);
+        this.rpmBox = $("<div id=\"RPMbox\"/>").appendTo(this.canvas);
+        this.rpmLabel = $("<div id=\"RPMLabel\"/>").appendTo(this.canvas);
 
         this.avgSpeedBox = $("<div id=\"AVGSpeedbox\"/>").appendTo(this.canvas);
 
@@ -201,15 +201,21 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.resetButton = $("<button id=\"resetButton\">reset</button>").appendTo(this.canvas);
 
+        this.playPauseButton = $("<button id=\"playPauseButton\"></button>").appendTo(this.canvas);
+
         this.timingLabel.html("00:00:00");
 
-        this.rpmLabel.html("0 RPM");
+        this.rpmBox.html("0");
+
+        this.rpmLabel.html("RPM");
 
         this.avgSpeedBox.html("0");
 
         this.avgSpeedLabel.html("AVG MPH");
 
         this.messageBox.html("Press Dial");
+
+        this.playPauseButton.html("play");
 
         // now let's get our data in place
 
@@ -239,6 +245,13 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
             resumeStopwatch();
         });
 
+        const self = this;
+
+        this.playPauseButton.on('click', function () {
+            // Your code to handle the button click event
+            self.playPause();
+        });
+
     },
 
     focused: function () {
@@ -262,26 +275,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
             case "selectStart":
 
-                //if the stopwatch and avg speed have never been started before, start them.
-                if (this.running == false) {
-                    startAvgSpeed();
-                    startStopwatch();
-                    this.running = true;
-                    this.messageBox.hide();
-                } else if (this.paused == false) {
-                    console.log("attempting to pause")
-                    pauseCurrentSpeed();
-                    pauseStopwatch();
-                    this.paused = true;
-                    this.messageBox.html("PAUSED")
-                    this.messageBox.show()
-                } else {
-                    console.log("attempting to resume")
-                    startAvgSpeed();
-                    resumeStopwatch();
-                    this.paused = false;
-                    this.messageBox.hide()
-                }
+                this.playPause();
 
                 break;
         }
@@ -389,7 +383,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.speedLabel.html(this.regions[this.getRegion()].unit);
 
         //update RPM label on display
-        this.rpmLabel.html(this.sections[1].value + " RPM");
+        this.rpmBox.html(this.sections[1].value);
 
         //update average speed on display
         setCurrentSpeed(speed);
@@ -411,6 +405,32 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.showSection();
 
+    },
+
+    playPause: function () {
+        //if the stopwatch and avg speed have never been started before, start them.
+        if (!this.running) {
+            startAvgSpeed();
+            startStopwatch();
+            this.running = true;
+            this.messageBox.hide();
+            this.playPauseButton.html("pause");
+        } else if (!this.paused) {
+            console.log("attempting to pause")
+            pauseCurrentSpeed();
+            pauseStopwatch();
+            this.paused = true;
+            this.messageBox.html("PAUSED")
+            this.messageBox.show()
+            this.playPauseButton.html("play");
+        } else {
+            console.log("attempting to resume")
+            startAvgSpeed();
+            resumeStopwatch();
+            this.paused = false;
+            this.messageBox.hide()
+            this.playPauseButton.html("pause");
+        }
     },
 
 

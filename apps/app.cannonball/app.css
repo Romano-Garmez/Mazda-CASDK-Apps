@@ -25,8 +25,8 @@
   position: absolute;
   top: 15px;
   left: 25px;
-  bottom: 250px;
-  right: 480px;
+  height: 125px;
+  width: 280px;
   text-align: center;
   line-height: 125px;
   font-size: 100px;
@@ -35,12 +35,64 @@
 
 [app="app.cannonball"] #speedLabel {
   position: absolute;
-  bottom: 250px;
-  left: 0;
-  right: 270px;
+  top: 100px;
+  left: 25px;
+  width: 280px;
+  height: 45px;
   font-size: 35px;
+  line-height: 45px;
   color: rgba(255, 255, 255, 0.95);
-  text-align: center;
+  text-align: right;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #AVGSpeedbox {
+  background: rgba(0, 0, 255, 0.75);
+  position: absolute;
+  top: 175px;
+  left: 25px;
+  height: 135px;
+  width: 290px;
+  line-height: 100px;
+  font-size: 90px;
+}
+
+[app="app.cannonball"] #AVGSpeedLabel {
+  position: absolute;
+  top: 260px;
+  left: 25px;
+  width: 280px;
+  height: 45px;
+  font-size: 35px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: right;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #RPMbox {
+  background: rgba(0, 0, 255, 0.75);
+  position: absolute;
+  top: 335px;
+  left: 25px;
+  height: 135px;
+  width: 290px;
+  line-height: 100px;
+  font-size: 90px;
+}
+
+[app="app.cannonball"] #RPMLabel {
+  position: absolute;
+  top: 420px;
+  left: 25px;
+  width: 280px;
+  height: 45px;
+  font-size: 35px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: right;
   display: block;
   text-transform: uppercase;
 }
@@ -52,70 +104,57 @@
   font-size: 100px;
   top: 15px;
   left: 330px;
-  bottom: 100px;
+  height: 300px;
   right: 25px;
-}
-
-[app="app.cannonball"] #RPMbox {
-  background: rgba(0, 0, 255, 0.75);
-  position: absolute;
-  top: 325px;
-  left: 25px;
-  bottom: 0px;
-  right: 25px;
-  line-height: 75px;
-  font-size: 50px;
-}
-
-[app="app.cannonball"] #AVGSpeedbox {
-  background: rgba(0, 0, 255, 0.75);
-  position: absolute;
-  top: 175px;
-  left: 25px;
-  bottom: 100px;
-  right: 480px;
-  line-height: 100px;
-  font-size: 90px;
-}
-
-[app="app.cannonball"] #AVGSpeedLabel {
-  position: absolute;
-  bottom: 100px;
-  left: 0;
-  right: 330px;
-  font-size: 35px;
-  color: rgba(255, 255, 255, 0.95);
-  text-align: center;
-  display: block;
-  text-transform: uppercase;
-}
-
-[app="app.cannonball"] #messageBox {
-  background: rgba(0, 0, 0, 0.75);
-  position: absolute;
-  bottom: 150px;
-  left: 100px;
-  right: 100px;
-  top: 150px;
-  font-size: 100px;
-  color: rgba(255, 255, 255, 0.95);
-  text-align: center;
-  display: block;
-  text-transform: uppercase;
-  line-height: 100px;
 }
 
 [app="app.cannonball"] #resetButton {
   background: rgba(0, 255, 0, 0.75);
   border-radius: 25px;
   position: absolute;
-  bottom: 325px;
-  left: 685px;
-  top: 15px;
-  font-size: 20px;
+  width: 215px;
+  top: 335px;
+  height: 135px;
+  right: 25px;
+  line-height: 100px;
+  font-size: 50px;
   color: rgba(255, 255, 255, 0.95);
   text-align: center;
   display: block;
   text-transform: uppercase;
   border: 5px solid rgba(255, 0, 0, 0.25);
+}
+
+[app="app.cannonball"] #playPauseButton {
+  background: rgba(0, 255, 0, 0.75);
+  border-radius: 25px;
+  position: absolute;
+  width: 215px;
+  top: 335px;
+  height: 135px;
+  left: 330px;
+  line-height: 50px;
+  font-size: 50px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+  border: 5px solid rgba(255, 0, 0, 0.25);
+}
+
+
+
+[app="app.cannonball"] #messageBox {
+  background: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  left: 100px;
+  right: 100px;
+  top: 150px;
+  height:180px;
+  font-size: 100px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+  line-height: 180px;
 }
