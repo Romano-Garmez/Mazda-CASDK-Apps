@@ -50,7 +50,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
          * (js) defines javascript includes
          */
 
-        js: ['averageSpeed.js', 'stopwatch.js'],
+        js: ['averageSpeed.js', 'stopwatch.js', 'gauge.js'],
 
         /**
          * (css) defines css includes
@@ -222,8 +222,9 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.pageTwo = $("<div id=\"pageTwo\"/>").appendTo(this.canvas);
 
         this.vehicleSpeedGauge = $("<div id=\"vehicleSpeedGauge\"/>").appendTo(this.pageTwo);
-        this.vehicleSpeedGaugeFill = $("<div id=\"vehicleSpeedGaugeFill\"/>").appendTo(this.pageTwo);
-        this.vehicleSpeedGaugeNeedle = $("<div id=\"vehicleSpeedGaugeNeedle\"/>").appendTo(this.pageTwo);
+        this.vehicleSpeedGaugeFill = $("<div id=\"speedGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.vehicleSpeedGaugeNeedle = $("<div id=\"speedGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
+        setUpGauges(this.vehicleSpeedGaugeNeedle);
 
         this.vehicleSpeedLabel = $("<span id=\"vehicleSpeedLabel\"/>").appendTo(this.pageTwo);
         this.vehicleSpeedLabel.html("Vehicle Speed");
@@ -452,8 +453,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.speedBox.html(speed);
         this.vehicleSpeedGauge.html(speed);
 
-        var degrees = (speed / 150) * 180 - 90;
-        this.vehicleSpeedGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = speed;
+        updateGauges(speed);
 
         // update name on display
         this.speedLabel.html(this.regions[this.getRegion()].unit);

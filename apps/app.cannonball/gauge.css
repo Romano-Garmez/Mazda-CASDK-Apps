@@ -12,19 +12,17 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-[app="app.cannonball"] #vehicleSpeedGaugeFill {
+[app="app.cannonball"] .gaugeFill {
   width: 235px;
   height: 235px;
   border: 20px solid #ddd;
   border-radius: 50%;
   position: absolute;
-  top: 25px;
-  left: 10px;
   box-sizing: border-box;
   clip: rect(0, 235px, 115px, 0);
 }
 
-[app="app.cannonball"] #vehicleSpeedGaugeNeedle {
+[app="app.cannonball"] .gaugeNeedle {
   width: 15px;
   height: 30px;
   background: #666;
@@ -36,6 +34,16 @@
   transform: rotate(-90deg);
   transition: transform 0.2s;
   z-index: 4;
+}
+
+[app="app.cannonball"] #speedGaugeFill {
+  top: 25px;
+  left: 10px;
+}
+
+[app="app.cannonball"] #speedGaugeNeedle {
+  top: 20px;
+  left: 120px;
 }
 
 [app="app.cannonball"] #vehicleSpeedLabel {
