@@ -1,7 +1,26 @@
 [app="app.cannonball"] {
-	background:rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
+
 [app="app.cannonball"] div {
+  position: absolute;
+  text-align: center;
+  line-height: 125px;
+  font-size: 100px;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[app="app.cannonball"] span {
+  position: absolute;
+  font-size: 35px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #speedBox {
   background: rgba(255, 0, 0, 0.75);
   position: absolute;
   top: 15px;
@@ -12,10 +31,9 @@
   line-height: 125px;
   font-size: 100px;
   border: 5px solid rgba(255, 0, 0, 0.25);
-  border-radius: 25px;
-  color: rgba(255, 255, 255, 0.9);
 }
-[app="app.cannonball"] span {
+
+[app="app.cannonball"] #speedLabel {
   position: absolute;
   bottom: 250px;
   left: 0;
@@ -26,7 +44,9 @@
   display: block;
   text-transform: uppercase;
 }
+
 [app="app.cannonball"] #timingbox {
+  background: rgba(0, 255, 0, 0.75);
   position: absolute;
   line-height: 300px;
   font-size: 100px;
@@ -34,10 +54,10 @@
   left: 330px;
   bottom: 100px;
   right: 25px;
-  background: rgba(0, 255, 0, 0.75);
 }
 
 [app="app.cannonball"] #RPMbox {
+  background: rgba(0, 0, 255, 0.75);
   position: absolute;
   top: 325px;
   left: 25px;
@@ -45,10 +65,10 @@
   right: 25px;
   line-height: 75px;
   font-size: 50px;
-  background: rgba(0, 0, 255, 0.75);
 }
 
 [app="app.cannonball"] #AVGSpeedbox {
+  background: rgba(0, 0, 255, 0.75);
   position: absolute;
   top: 175px;
   left: 25px;
@@ -56,7 +76,6 @@
   right: 480px;
   line-height: 100px;
   font-size: 90px;
-  background: rgba(0, 0, 255, 0.75);
 }
 
 [app="app.cannonball"] #AVGSpeedLabel {
@@ -72,6 +91,7 @@
 }
 
 [app="app.cannonball"] #messageBox {
+  background: rgba(0, 0, 0, 0.75);
   position: absolute;
   bottom: 150px;
   left: 100px;
@@ -83,10 +103,10 @@
   display: block;
   text-transform: uppercase;
   line-height: 100px;
-  background: rgba(0, 0, 0, 0.75);
 }
 
 [app="app.cannonball"] #resetButton {
+  background: rgba(0, 255, 0, 0.75);
   border-radius: 25px;
   position: absolute;
   bottom: 325px;
@@ -97,6 +117,5 @@
   text-align: center;
   display: block;
   text-transform: uppercase;
-  background: rgba(0, 255, 0, 0.75);
   border: 5px solid rgba(255, 0, 0, 0.25);
 }

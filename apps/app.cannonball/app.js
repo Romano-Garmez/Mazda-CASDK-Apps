@@ -183,11 +183,11 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         // 1) create a value label that shows the current value of the selected section
 
-        this.valueLabel = $("<div id=\"speedbox\"/>").appendTo(this.canvas);
+        this.speedBox = $("<div id=\"speedBox\"/>").appendTo(this.canvas);
 
         // 2) create a name label that shows the name of the selected section
 
-        this.nameLabel = $("<span/>").appendTo(this.canvas);
+        this.speedLabel = $("<span id=\"speedLabel\"/>").appendTo(this.canvas);
 
         this.timingLabel = $("<div id=\"timingbox\"/>").appendTo(this.canvas);
 
@@ -268,23 +268,21 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
                     startStopwatch();
                     this.running = true;
                     this.messageBox.hide();
+                } else if (this.paused == false) {
+                    console.log("attempting to pause")
+                    pauseCurrentSpeed();
+                    pauseStopwatch();
+                    this.paused = true;
+                    this.messageBox.html("PAUSED")
+                    this.messageBox.show()
                 } else {
-
-                    if (this.paused == false) {
-                        console.log("attempting to pause")
-                        pauseCurrentSpeed();
-                        pauseStopwatch();
-                        this.paused = true;
-                        this.messageBox.html("PAUSED")
-                        this.messageBox.show()
-                    } else {
-                        console.log("attempting to resume")
-                        startAvgSpeed();
-                        resumeStopwatch();
-                        this.paused = false;
-                        this.messageBox.hide()
-                    }
+                    console.log("attempting to resume")
+                    startAvgSpeed();
+                    resumeStopwatch();
+                    this.paused = false;
+                    this.messageBox.hide()
                 }
+
                 break;
         }
 
@@ -385,10 +383,10 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         }
 
         //update speed on display
-        this.valueLabel.html(speed);
+        this.speedBox.html(speed);
 
         // update name on display
-        this.nameLabel.html(this.regions[this.getRegion()].unit);
+        this.speedLabel.html(this.regions[this.getRegion()].unit);
 
         //update RPM label on display
         this.rpmLabel.html(this.sections[1].value + " RPM");
