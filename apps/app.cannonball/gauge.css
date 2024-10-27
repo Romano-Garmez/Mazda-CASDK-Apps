@@ -52,6 +52,13 @@
   left: 10px;
 }
 
+[app="app.cannonball"] #speedGaugeFillRed {
+  top: 20px;
+  left: 10px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 240px, 120px, 210px);  /* Adjusted these values to create a smaller arc segment */
+}
+
 [app="app.cannonball"] #speedGaugeNeedle {
   top: 10px;
   left: 125px;
