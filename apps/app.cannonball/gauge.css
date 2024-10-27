@@ -1,10 +1,11 @@
 [app="app.cannonball"] .gauge {
-  background: linear-gradient(0deg, rgba(46,46,46,1) 0%, rgba(48,48,48,1) 50%, rgba(83,83,83,1) 100%);
+  background: linear-gradient(0deg, rgba(46, 46, 46, 1) 0%, rgba(48, 48, 48, 1) 50%, rgba(83, 83, 83, 1) 100%);
+  background: -o-linear-gradient(bottom, rgb(46, 46, 46) 0%, rgb(48, 48, 48) 50%, rgb(83, 83, 83) 100%);
   position: absolute;
   text-align: center;
   width: 260px;
   height: 230px;
-  line-height: 200px;
+  line-height: 250px;
   font-size: 50px;
   border-radius: 25px;
   color: rgba(255, 255, 255, 0.9);
@@ -18,6 +19,15 @@
   position: absolute;
   box-sizing: border-box;
   clip: rect(0, 240px, 120px, 0);
+}
+
+[app="app.cannonball"] .gaugeFillRed {
+  width: 240px;
+  height: 240px;
+  border: 20px solid #ff0000;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: border-box;
 }
 
 [app="app.cannonball"] .gaugeNeedle {
@@ -69,6 +79,13 @@
 [app="app.cannonball"] #engineRPMGaugeFill {
   top: 270px;
   left: 10px;
+}
+
+[app="app.cannonball"] #engineRPMGaugeFillRed {
+  top: 270px;
+  left: 10px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 240px, 120px, 205px);  /* Adjusted these values to create a smaller arc segment */
 }
 
 [app="app.cannonball"] #engineRPMGaugeNeedle {
@@ -170,6 +187,13 @@
 [app="app.cannonball"] #fuelLevelGaugeFill {
   top: 270px;
   left: 550px;
+}
+
+[app="app.cannonball"] #fuelLevelGaugeFillRed {
+  top: 270px;
+  left: 550px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 30px, 120px, 0px);  /* Adjusted these values to create a smaller arc segment */
 }
 
 [app="app.cannonball"] #fuelLevelGaugeNeedle {

@@ -229,6 +229,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.engineRPMGauge = $("<div id=\"engineRPMGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
         this.engineRPMGaugeFill = $("<div id=\"engineRPMGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.engineRPMGaugeFillRed = $("<div id=\"engineRPMGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
         this.engineRPMGaugeNeedle = $("<div id=\"engineRPMGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.engineRPMLabel = $("<span id=\"engineRPMLabel\"/>").appendTo(this.pageTwo);
         this.engineRPMLabel.html("Engine RPM");
@@ -248,6 +249,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.fuelLevelGauge = $("<div id=\"fuelLevelGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
         this.fuelLevelGaugeFill = $("<div id=\"fuelLevelGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.fuelLevelGaugeFillRed = $("<div id=\"fuelLevelGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
         this.fuelLevelGaugeNeedle = $("<div id=\"fuelLevelGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel = $("<span id=\"fuelLevelLabel\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel.html("Fuel Level");
