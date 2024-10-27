@@ -6,10 +6,10 @@ function updateGauges(speed, RPM, fuel) {
     var degrees = (speed / 150) * 180 - 90;
     vehicleSpeedGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = speed;
 
-    degrees = (RPM / 7000) * 180 - 90;
+    degrees = (RPM / 8000) * 180 - 90;
     vehicleRPMGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = speed;
 
-    degrees = (fuel / 185) * 180 - 90;
+    degrees = (fuel / 184) * 180 - 90;
     fuelLevelGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = speed;
 }
 

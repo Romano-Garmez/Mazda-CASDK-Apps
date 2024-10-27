@@ -221,32 +221,32 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.pageTwo = $("<div id=\"pageTwo\"/>").appendTo(this.canvas);
 
-        this.vehicleSpeedGauge = $("<div id=\"vehicleSpeedGauge\"/>").appendTo(this.pageTwo);
+        this.vehicleSpeedGauge = $("<div id=\"vehicleSpeedGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
         this.vehicleSpeedGaugeFill = $("<div id=\"speedGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
         this.vehicleSpeedGaugeNeedle = $("<div id=\"speedGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.vehicleSpeedLabel = $("<span id=\"vehicleSpeedLabel\"/>").appendTo(this.pageTwo);
         this.vehicleSpeedLabel.html("Vehicle Speed");
 
-        this.engineRPMGauge = $("<div id=\"engineRPMGauge\"/>").appendTo(this.pageTwo);
+        this.engineRPMGauge = $("<div id=\"engineRPMGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
         this.engineRPMGaugeFill = $("<div id=\"engineRPMGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
         this.engineRPMGaugeNeedle = $("<div id=\"engineRPMGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.engineRPMLabel = $("<span id=\"engineRPMLabel\"/>").appendTo(this.pageTwo);
         this.engineRPMLabel.html("Engine RPM");
 
-        this.engineCoolantGauge = $("<div id=\"engineCoolantGauge\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGauge = $("<div id=\"engineCoolantGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
         this.engineCoolantLabel = $("<span id=\"engineCoolantLabel\"/>").appendTo(this.pageTwo);
         this.engineCoolantLabel.html("Coolant Temp");
 
-        this.engineIntakeGauge = $("<div id=\"engineIntakeGauge\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGauge = $("<div id=\"engineIntakeGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
         this.engineIntakeLabel = $("<span id=\"engineIntakeLabel\"/>").appendTo(this.pageTwo);
         this.engineIntakeLabel.html("Intake Temp");
 
-        this.timingGauge = $("<div id=\"timingGauge\"/>").appendTo(this.pageTwo);
+        this.timingGauge = $("<div id=\"timingGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
         this.timingGauge.html("00:00:00")
         this.timingGaugeLabel = $("<span id=\"timingGaugeLabel\"/>").appendTo(this.pageTwo);
         this.timingGaugeLabel.html("Timing");
 
-        this.fuelLevelGauge = $("<div id=\"fuelLevelGauge\"/>").appendTo(this.pageTwo);
+        this.fuelLevelGauge = $("<div id=\"fuelLevelGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
         this.fuelLevelGaugeFill = $("<div id=\"fuelLevelGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
         this.fuelLevelGaugeNeedle = $("<div id=\"fuelLevelGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel = $("<span id=\"fuelLevelLabel\"/>").appendTo(this.pageTwo);
