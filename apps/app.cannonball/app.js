@@ -460,11 +460,11 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.speedBox.html(speed);
         this.vehicleSpeedGauge.html(speed);
 
-        
+
 
         // update name on display
         this.speedLabel.html(this.regions[this.getRegion()].unit);
-        this.vehicleSpeedLabel.html("Speed (" + this.regions[this.getRegion()].unit +")");
+        this.vehicleSpeedLabel.html("Speed (" + this.regions[this.getRegion()].unit + ")");
 
         //update RPM label on display
         this.rpmBox.html(this.sections[1].value);
@@ -500,14 +500,16 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
     },
 
     playPause: function () {
-        //if the stopwatch and avg speed have never been started before, start them.
+
         if (!this.running) {
+            //if the stopwatch and avg speed have never been started before, start them.
             startAvgSpeed();
             startStopwatch();
             this.running = true;
             this.messageBox.hide();
             this.playPauseButton.html("pause");
         } else if (!this.paused) {
+            //if running, try to pause
             console.log("attempting to pause")
             pauseCurrentSpeed();
             pauseStopwatch();
@@ -516,6 +518,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
             this.messageBox.show()
             this.playPauseButton.html("play");
         } else {
+            //if paused, try to resume
             console.log("attempting to resume")
             startAvgSpeed();
             resumeStopwatch();
