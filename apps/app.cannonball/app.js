@@ -236,6 +236,10 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.engineRPMLabel.html("RPM");
 
         this.engineCoolantGauge = $("<div id=\"engineCoolantGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeeFill = $("<div id=\"engineCoolantGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeFillRed = $("<div id=\"engineCoolantGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeFillBlue = $("<div id=\"engineCoolantGaugeFillBlue\" class=\"gaugeFillBlue\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeNeedle = $("<div id=\"engineCoolantGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.engineCoolantLabel = $("<span id=\"engineCoolantLabel\"/>").appendTo(this.pageTwo);
         this.engineCoolantLabel.html("Coolant Temp");
 
@@ -255,7 +259,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.fuelLevelLabel = $("<span id=\"fuelLevelLabel\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel.html("Fuel");
 
-        setUpGauges(this.vehicleSpeedGaugeNeedle, this.engineRPMGaugeNeedle, this.fuelLevelGaugeNeedle);
+        setUpGauges(this.vehicleSpeedGaugeNeedle, this.engineRPMGaugeNeedle, this.fuelLevelGaugeNeedle, this.engineCoolantGaugeNeedle);
 
         // now let's get our data in place
 
@@ -473,13 +477,19 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         //update average speed on display
         setCurrentSpeed(speed);
 
-        this.engineIntakeGauge.html(this.sections[2].value);
+        var inTemp = this.sections[2].value * 1.8 + 32;
 
-        this.engineCoolantGauge.html(this.sections[3].value);
+        this.engineIntakeGauge.html(inTemp);
+
+        var coolTempC = this.sections[3].value -= 40;
+
+        var coolTempF = Math.round(coolTempC * 1.8 + 32);
+
+        this.engineCoolantGauge.html(coolTempF);
 
         this.fuelLevelGauge.html(calculateFuelLevel(this.sections[4].value));
 
-        updateGauges(speed, this.sections[1].value, this.sections[4].value);
+        updateGauges(speed, this.sections[1].value, this.sections[4].value, coolTempF);
     },
 
     /**

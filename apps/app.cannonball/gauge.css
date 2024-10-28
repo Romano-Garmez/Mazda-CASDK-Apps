@@ -29,6 +29,14 @@
   position: absolute;
   box-sizing: border-box;
 }
+[app="app.cannonball"] .gaugeFillBlue {
+  width: 240px;
+  height: 240px;
+  border: 20px solid #0000ff;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: border-box;
+}
 
 [app="app.cannonball"] .gaugeNeedle {
   width: 10px;
@@ -117,6 +125,30 @@
 [app="app.cannonball"] #engineCoolantGauge {
   top: 0px;
   left: 270px;
+}
+
+[app="app.cannonball"] #engineCoolantGaugeFill {
+  top: 20px;
+  left: 280px;
+}
+
+[app="app.cannonball"] #engineCoolantGaugeFillRed {
+  top: 20px;
+  left: 280px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 240px, 120px, 205px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineCoolantGaugeFillBlue {
+  top: 20px;
+  left: 280px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 35px, 120px, 0px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineCoolantGaugeNeedle {
+  top: 10px;
+  left: 395px;
 }
 
 [app="app.cannonball"] #engineCoolantLabel {
