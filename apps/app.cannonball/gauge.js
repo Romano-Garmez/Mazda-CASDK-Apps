@@ -17,8 +17,7 @@ function updateGauges(speed, RPM, fuel, coolantTemp) {
     degrees = (fuel / fullFuel) * 180 - 90;
     fuelLevelGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = fuel;
 
-    console.log("coolant temp is " + coolantTemp);
-    console.log(scaleValue(coolantTemp, 100, 190, 280));
+    coolantTemp = calculateCoolantTemp(coolantTemp);
     degrees = (scaleValue(coolantTemp, 100, 190, 280));
     coolantTempGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = coolant temp;
 }
@@ -52,4 +51,12 @@ function scaleValue(value, min, middle, max) {
         // Map 190-280 to 0-90 degrees
         return ((value - middle) / (max - middle)) * 90;
     }
+}
+
+function calculateCoolantTemp(coolantTemp){
+    var coolTempC = coolantTemp -= 40;
+
+    var coolTempF = Math.round(coolTempC * 1.8 + 32);
+
+    return coolTempF;
 }

@@ -185,17 +185,17 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         // 1) create a value label that shows the current value of the selected section
 
-        this.speedBox = $("<div id=\"speedBox\"/>").appendTo(this.pageOne);
+        this.speedBox = $("<div id=\"speedBox\" class=\"box\"/>").appendTo(this.pageOne);
 
         // 2) create a name label that shows the name of the selected section
         this.speedLabel = $("<span id=\"speedLabel\"/>").appendTo(this.pageOne);
 
-        this.timingLabel = $("<div id=\"timingbox\"/>").appendTo(this.pageOne);
+        this.timingLabel = $("<div id=\"timingbox\" class=\"box\"/>").appendTo(this.pageOne);
 
-        this.rpmBox = $("<div id=\"RPMbox\"/>").appendTo(this.pageOne);
-        this.rpmLabel = $("<div id=\"RPMLabel\"/>").appendTo(this.pageOne);
+        this.rpmBox = $("<div id=\"RPMbox\" class=\"box\"/>").appendTo(this.pageOne);
+        this.rpmLabel = $("<span id=\"RPMLabel\"/>").appendTo(this.pageOne);
 
-        this.avgSpeedBox = $("<div id=\"AVGSpeedbox\"/>").appendTo(this.pageOne);
+        this.avgSpeedBox = $("<div id=\"AVGSpeedbox\" class=\"box\"/>").appendTo(this.pageOne);
 
         this.avgSpeedLabel = $("<span id=\"AVGSpeedLabel\"/>").appendTo(this.pageOne);
 
@@ -481,15 +481,11 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.engineIntakeGauge.html(inTemp);
 
-        var coolTempC = this.sections[3].value -= 40;
-
-        var coolTempF = Math.round(coolTempC * 1.8 + 32);
-
-        this.engineCoolantGauge.html(coolTempF);
+        this.engineCoolantGauge.html(calculateCoolantTemp(this.sections[3].value));
 
         this.fuelLevelGauge.html(calculateFuelLevel(this.sections[4].value));
 
-        updateGauges(speed, this.sections[1].value, this.sections[4].value, coolTempF);
+        updateGauges(speed, this.sections[1].value, this.sections[4].value, this.sections[3].value);
     },
 
     /**
