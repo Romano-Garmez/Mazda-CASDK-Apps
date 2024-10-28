@@ -17,16 +17,16 @@ Includes:
 # Lap Timer and Gauges
 ![cannonballTimer](/screenshots/cannonballTimer.png)
 ![cannonballTimerPage2](/screenshots/cannonballTimer2.png)
-Lap timer and extra gauges! May need some fine tuning for your specific vehicle
+#### Lap timer and extra gauges! May need some fine tuning for your specific vehicle
 
 # Fuel Consumption
 ![fuelConsumption](/screenshots/fuelConsumption.png)
-Fuel consumption in a variety of strange measurements, including realtime gas gauge bar at the bottom of the screen
+#### Fuel consumption in a variety of strange measurements, including realtime gas gauge bar at the bottom of the screen
 
 # Starbucks per McDonalds joke app
 ![starbucksMcdonalds](/screenshots/starbucksMcdonalds.png)
-Currently untested
+#### Currently untested
 
 # 0-60 Timer
 ![accelTimer](/screenshots/accelTimer.png)
-Non-functional due to CASDK's 1 second polling rate for all vehicle data
+#### Non-functional due to CASDK's 1 second polling rate for all vehicle data
