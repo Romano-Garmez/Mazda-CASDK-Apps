@@ -1,0 +1,265 @@
+[app="app.cannonball"] .gauge {
+  background: linear-gradient(0deg, rgba(46, 46, 46, 1) 0%, rgba(48, 48, 48, 1) 50%, rgba(83, 83, 83, 1) 100%);
+  background: -o-linear-gradient(bottom, rgb(46, 46, 46) 0%, rgb(48, 48, 48) 50%, rgb(83, 83, 83) 100%);
+  position: absolute;
+  text-align: center;
+  width: 260px;
+  height: 230px;
+  line-height: 250px;
+  font-size: 50px;
+  border-radius: 25px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[app="app.cannonball"] .gaugeFill {
+  width: 240px;
+  height: 240px;
+  border: 20px solid #ddd;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: border-box;
+  clip: rect(0, 240px, 120px, 0);
+}
+
+[app="app.cannonball"] .gaugeFillRed {
+  width: 240px;
+  height: 240px;
+  border: 20px solid #ff0000;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: border-box;
+}
+[app="app.cannonball"] .gaugeFillBlue {
+  width: 240px;
+  height: 240px;
+  border: 20px solid #0000ff;
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+[app="app.cannonball"] .gaugeNeedle {
+  width: 10px;
+  height: 40px;
+  background: #666;
+  position: absolute;
+  border-radius: 7.5px;
+  transform-origin: center 130px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s;
+  z-index: 4;
+}
+
+[app="app.cannonball"] #vehicleSpeedGauge {
+  top: 0px;
+  left: 0px;
+}
+
+[app="app.cannonball"] #speedGaugeFill {
+  top: 20px;
+  left: 10px;
+}
+
+[app="app.cannonball"] #speedGaugeFillRed {
+  top: 20px;
+  left: 10px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 240px, 120px, 210px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #speedGaugeNeedle {
+  top: 10px;
+  left: 125px;
+}
+
+[app="app.cannonball"] #vehicleSpeedLabel {
+  position: absolute;
+  top: 180px;
+  left: 0px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #engineRPMGauge {
+  top: 250px;
+  left: 0px;
+}
+
+[app="app.cannonball"] #engineRPMGaugeFill {
+  top: 270px;
+  left: 10px;
+}
+
+[app="app.cannonball"] #engineRPMGaugeFillRed {
+  top: 270px;
+  left: 10px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 240px, 120px, 205px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineRPMGaugeNeedle {
+  top: 260px;
+  left: 125px;
+}
+
+[app="app.cannonball"] #engineRPMLabel {
+  position: absolute;
+  top: 430px;
+  left: 0px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #engineCoolantGauge {
+  top: 0px;
+  left: 270px;
+}
+
+[app="app.cannonball"] #engineCoolantGaugeFill {
+  top: 20px;
+  left: 280px;
+}
+
+[app="app.cannonball"] #engineCoolantGaugeFillRed {
+  top: 20px;
+  left: 280px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 240px, 120px, 205px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineCoolantGaugeFillBlue {
+  top: 20px;
+  left: 280px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 35px, 120px, 0px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineCoolantGaugeNeedle {
+  top: 10px;
+  left: 395px;
+}
+
+[app="app.cannonball"] #engineCoolantLabel {
+  position: absolute;
+  top: 180px;
+  left: 270px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #engineIntakeGauge {
+  left: 270px;
+  top: 250px;
+}
+
+[app="app.cannonball"] #engineIntakeGaugeFill {
+  top: 270px;
+  left: 280px;
+}
+
+[app="app.cannonball"] #engineIntakeGaugeFillRed {
+  top: 270px;
+  left: 280px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 240px, 120px, 215px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineIntakeGaugeFillBlue {
+  top: 270px;
+  left: 280px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 25px, 120px, 0px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineIntakeGaugeNeedle {
+  top: 260px;
+  left: 395px;
+}
+
+[app="app.cannonball"] #engineIntakeLabel {
+  position: absolute;
+  top: 430px;
+  left: 270px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #timingGauge {
+  top: 0px;
+  left: 540px;
+}
+
+[app="app.cannonball"] #timingGaugeLabel {
+  position: absolute;
+  top: 180px;
+  left: 540px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+
+}
+
+[app="app.cannonball"] #fuelLevelGauge {
+  left: 540px;
+  top: 250px;
+}
+
+[app="app.cannonball"] #fuelLevelLabel {
+  position: absolute;
+  top: 430px;
+  left: 540px;
+  width: 255px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+  color: rgba(255, 255, 255, 0.95);
+  text-align: center;
+  display: block;
+  text-transform: uppercase;
+}
+
+[app="app.cannonball"] #fuelLevelGaugeFill {
+  top: 270px;
+  left: 550px;
+}
+
+[app="app.cannonball"] #fuelLevelGaugeFillRed {
+  top: 270px;
+  left: 550px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 30px, 120px, 0px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #fuelLevelGaugeNeedle {
+  top: 260px;
+  left: 665px;
+}

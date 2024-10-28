@@ -4,15 +4,17 @@ timeOfReset = 0;
 resetTime = -1;
 resetEndTime = -1;
 swhtmlElement = null;
+swhtmlElement2 = null;
 swinterval = null;
 
 /* setUpStopwatch
     * Set up the stopwatch with an HTML element
     * inputHTMLElement: the HTML element to display the stopwatch
     */
-function setUpStopwatch(inputHTMLElement) {
+function setUpStopwatch(inputHTMLElement, inputHTMLElement2) {
     swinterval = null
     swhtmlElement = inputHTMLElement;
+    swhtmlElement2 = inputHTMLElement2;
 }
 
 /* startStopwatch
@@ -63,6 +65,8 @@ function showStopwatchTime() {
         seconds = (seconds < 10) ? "0" + seconds : seconds;
 
         swhtmlElement.html(hours + ":" + minutes + ":" + seconds);
+        swhtmlElement2.html(hours + ":" + minutes + ":" + seconds);
+
     }
     return -1;
 }

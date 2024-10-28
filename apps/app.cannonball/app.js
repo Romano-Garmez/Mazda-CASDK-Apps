@@ -50,13 +50,13 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
          * (js) defines javascript includes
          */
 
-        js: ['averageSpeed.js', 'stopwatch.js'],
+        js: ['averageSpeed.js', 'stopwatch.js', 'gauge.js'],
 
         /**
          * (css) defines css includes
          */
 
-        css: ['app.css'],
+        css: ['app.css', 'gauge.css'],
 
         /**
          * (images) defines images that are being preloaded
@@ -181,27 +181,29 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         // let's build our interface
 
+        this.pageOne = $("<div id=\"pageOne\"/>").appendTo(this.canvas);
+
         // 1) create a value label that shows the current value of the selected section
 
-        this.speedBox = $("<div id=\"speedBox\"/>").appendTo(this.canvas);
+        this.speedBox = $("<div id=\"speedBox\" class=\"box\"/>").appendTo(this.pageOne);
 
         // 2) create a name label that shows the name of the selected section
-        this.speedLabel = $("<span id=\"speedLabel\"/>").appendTo(this.canvas);
+        this.speedLabel = $("<span id=\"speedLabel\"/>").appendTo(this.pageOne);
 
-        this.timingLabel = $("<div id=\"timingbox\"/>").appendTo(this.canvas);
+        this.timingLabel = $("<div id=\"timingbox\" class=\"box\"/>").appendTo(this.pageOne);
 
-        this.rpmBox = $("<div id=\"RPMbox\"/>").appendTo(this.canvas);
-        this.rpmLabel = $("<div id=\"RPMLabel\"/>").appendTo(this.canvas);
+        this.rpmBox = $("<div id=\"RPMbox\" class=\"box\"/>").appendTo(this.pageOne);
+        this.rpmLabel = $("<span id=\"RPMLabel\"/>").appendTo(this.pageOne);
 
-        this.avgSpeedBox = $("<div id=\"AVGSpeedbox\"/>").appendTo(this.canvas);
+        this.avgSpeedBox = $("<div id=\"AVGSpeedbox\" class=\"box\"/>").appendTo(this.pageOne);
 
-        this.avgSpeedLabel = $("<span id=\"AVGSpeedLabel\"/>").appendTo(this.canvas);
+        this.avgSpeedLabel = $("<span id=\"AVGSpeedLabel\"/>").appendTo(this.pageOne);
 
-        this.messageBox = $("<div id=\"messageBox\"/>").appendTo(this.canvas);
+        this.messageBox = $("<div id=\"messageBox\"/>").appendTo(this.pageOne);
 
-        this.resetButton = $("<button id=\"resetButton\">reset</button>").appendTo(this.canvas);
+        this.resetButton = $("<button id=\"resetButton\">reset</button>").appendTo(this.pageOne);
 
-        this.playPauseButton = $("<button id=\"playPauseButton\"></button>").appendTo(this.canvas);
+        this.playPauseButton = $("<button id=\"playPauseButton\"></button>").appendTo(this.pageOne);
 
         this.timingLabel.html("00:00:00");
 
@@ -217,6 +219,52 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.playPauseButton.html("play");
 
+        this.pageTwo = $("<div id=\"pageTwo\"/>").appendTo(this.canvas);
+
+        this.vehicleSpeedGauge = $("<div id=\"vehicleSpeedGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
+        this.vehicleSpeedGaugeFill = $("<div id=\"speedGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.vehicleSpeedGaugeFillRed = $("<div id=\"speedGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
+        this.vehicleSpeedGaugeNeedle = $("<div id=\"speedGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
+        this.vehicleSpeedLabel = $("<span id=\"vehicleSpeedLabel\"/>").appendTo(this.pageTwo);
+        this.vehicleSpeedLabel.html("Speed");
+
+        this.engineRPMGauge = $("<div id=\"engineRPMGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
+        this.engineRPMGaugeFill = $("<div id=\"engineRPMGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.engineRPMGaugeFillRed = $("<div id=\"engineRPMGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
+        this.engineRPMGaugeNeedle = $("<div id=\"engineRPMGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
+        this.engineRPMLabel = $("<span id=\"engineRPMLabel\"/>").appendTo(this.pageTwo);
+        this.engineRPMLabel.html("RPM");
+
+        this.engineCoolantGauge = $("<div id=\"engineCoolantGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeFill = $("<div id=\"engineCoolantGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeFillRed = $("<div id=\"engineCoolantGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeFillBlue = $("<div id=\"engineCoolantGaugeFillBlue\" class=\"gaugeFillBlue\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeNeedle = $("<div id=\"engineCoolantGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
+        this.engineCoolantLabel = $("<span id=\"engineCoolantLabel\"/>").appendTo(this.pageTwo);
+        this.engineCoolantLabel.html("Coolant Temp");
+
+        this.engineIntakeGauge = $("<div id=\"engineIntakeGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGaugeFill = $("<div id=\"engineIntakeGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGaugeFillRed = $("<div id=\"engineIntakeGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGaugeFillBlue = $("<div id=\"engineIntakeGaugeFillBlue\" class=\"gaugeFillBlue\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGaugeNeedle = $("<div id=\"engineIntakeGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
+        this.engineIntakeLabel = $("<span id=\"engineIntakeLabel\"/>").appendTo(this.pageTwo);
+        this.engineIntakeLabel.html("Intake Temp");
+
+        this.timingGauge = $("<div id=\"timingGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
+        this.timingGauge.html("00:00:00")
+        this.timingGaugeLabel = $("<span id=\"timingGaugeLabel\"/>").appendTo(this.pageTwo);
+        this.timingGaugeLabel.html("Timing");
+
+        this.fuelLevelGauge = $("<div id=\"fuelLevelGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
+        this.fuelLevelGaugeFill = $("<div id=\"fuelLevelGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.fuelLevelGaugeFillRed = $("<div id=\"fuelLevelGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
+        this.fuelLevelGaugeNeedle = $("<div id=\"fuelLevelGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
+        this.fuelLevelLabel = $("<span id=\"fuelLevelLabel\"/>").appendTo(this.pageTwo);
+        this.fuelLevelLabel.html("Fuel");
+
+        setUpGauges(this.vehicleSpeedGaugeNeedle, this.engineRPMGaugeNeedle, this.fuelLevelGaugeNeedle, this.engineCoolantGaugeNeedle, this.engineIntakeGaugeNeedle);
+
         // now let's get our data in place
 
         // 1) create our sections by calling our application specific method
@@ -229,9 +277,15 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.running = false;
 
+        this.pages = [0, 1];
+
+        this.currentPageIndex = 0;
+
+        this.showPage(this.currentPageIndex);
+
         setUpAvgSpeed(this.avgSpeedBox);
 
-        setUpStopwatch(this.timingLabel);
+        setUpStopwatch(this.timingLabel, this.timingGauge);
 
         this.resetButton.on('click', function () {
             // Your code to handle the button click event
@@ -276,6 +330,37 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
             case "selectStart":
 
                 this.playPause();
+
+                break;
+            /**
+             * Go forward in displaying our sections
+             */
+
+            case "cw":
+            case "rightStart":
+
+                // we just cyle the sections here
+
+                this.currentPageIndex++;
+                if (this.currentPageIndex >= this.pages.length) this.currentPageIndex = 0;
+
+                this.showPage(this.currentPageIndex);
+
+                break;
+
+            /**
+             * Go backwards in displaying our sections
+             */
+
+            case "ccw":
+            case "leftStart":
+
+                // we just cyle the sections here
+
+                this.currentPageIndex--;
+                if (this.currentPageIndex < 0) this.currentPageIndex = this.pages.length - 1;
+
+                this.showPage(this.currentPageIndex);
 
                 break;
         }
@@ -330,6 +415,9 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
             // Vehicle RPM
             { field: VehicleData.vehicle.rpm, name: 'RPM' },
+            { field: VehicleData.temperature.intake, name: 'INTAKETEMP' },
+            { field: VehicleData.temperature.coolant, name: 'COOLANTTEMP' },
+            { field: VehicleData.fuel.position, name: 'FUELLEVEL' },
         ];
 
         // let's actually execute the subscriptions
@@ -378,16 +466,28 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         //update speed on display
         this.speedBox.html(speed);
+        this.vehicleSpeedGauge.html(speed);
+
+
 
         // update name on display
         this.speedLabel.html(this.regions[this.getRegion()].unit);
+        this.vehicleSpeedLabel.html("Speed (" + this.regions[this.getRegion()].unit + ")");
 
         //update RPM label on display
         this.rpmBox.html(this.sections[1].value);
+        this.engineRPMGauge.html(this.sections[1].value);
 
         //update average speed on display
         setCurrentSpeed(speed);
 
+        this.engineIntakeGauge.html(calculateTemp(this.sections[2].value));
+
+        this.engineCoolantGauge.html(calculateTemp(this.sections[3].value));
+
+        this.fuelLevelGauge.html(calculateFuelLevel(this.sections[4].value));
+
+        updateGauges(speed, this.sections[1].value, this.sections[4].value, this.sections[3].value, this.sections[2].value);
     },
 
     /**
@@ -408,14 +508,16 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
     },
 
     playPause: function () {
-        //if the stopwatch and avg speed have never been started before, start them.
+
         if (!this.running) {
+            //if the stopwatch and avg speed have never been started before, start them.
             startAvgSpeed();
             startStopwatch();
             this.running = true;
             this.messageBox.hide();
             this.playPauseButton.html("pause");
         } else if (!this.paused) {
+            //if running, try to pause
             console.log("attempting to pause")
             pauseCurrentSpeed();
             pauseStopwatch();
@@ -424,6 +526,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
             this.messageBox.show()
             this.playPauseButton.html("play");
         } else {
+            //if paused, try to resume
             console.log("attempting to resume")
             startAvgSpeed();
             resumeStopwatch();
@@ -433,5 +536,15 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         }
     },
 
+
+    showPage: function (currentPageIndex) {
+        if (currentPageIndex == 0) {
+            this.pageOne.show();
+            this.pageTwo.hide();
+        } else {
+            this.pageOne.hide();
+            this.pageTwo.show();
+        }
+    }
 
 }));
