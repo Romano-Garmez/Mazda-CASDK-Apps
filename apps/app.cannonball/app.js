@@ -279,7 +279,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         this.pages = [0, 1];
 
-        this.currentPageIndex = 1;
+        this.currentPageIndex = 0;
 
         this.showPage(this.currentPageIndex);
 
