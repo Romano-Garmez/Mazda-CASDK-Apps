@@ -23,7 +23,7 @@ function updateGauges(speed, RPM, fuel, coolantTemp, intakeTemp) {
     coolantTempGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = coolant temp;
 
     intakeTemp = calculateTemp(intakeTemp);
-    degrees = (scaleValue(intakeTemp, 50, 95, 140));
+    degrees = (scaleValue(intakeTemp, 50, 90, 120));
     intakeTempGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = intake temp;
 }
 
