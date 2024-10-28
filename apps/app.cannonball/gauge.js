@@ -2,12 +2,13 @@ vehicleSpeedGaugeNeedle = null;
 vehicleRPMGaugeNeedle = null;
 fuelLevelGaugeNeedle = null;
 coolantTempGaugeNeedle = null;
+intakeTempGaugeNeedle = null;
 const maxSpeed = 150;
 const maxRPM = 8000;
 const fullFuel = 184;
 
 
-function updateGauges(speed, RPM, fuel, coolantTemp) {
+function updateGauges(speed, RPM, fuel, coolantTemp, intakeTemp) {
     var degrees = (speed / maxSpeed) * 180 - 90;
     vehicleSpeedGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = speed;
 
@@ -17,16 +18,21 @@ function updateGauges(speed, RPM, fuel, coolantTemp) {
     degrees = (fuel / fullFuel) * 180 - 90;
     fuelLevelGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = fuel;
 
-    coolantTemp = calculateCoolantTemp(coolantTemp);
+    coolantTemp = calculateTemp(coolantTemp);
     degrees = (scaleValue(coolantTemp, 100, 190, 280));
     coolantTempGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = coolant temp;
+
+    intakeTemp = calculateTemp(intakeTemp);
+    degrees = (scaleValue(intakeTemp, 50, 95, 140));
+    intakeTempGaugeNeedle.css('transform', 'rotate(' + degrees + 'deg)');        //value.textContent = intake temp;
 }
 
-function setUpGauges(inputSpeedNeedle, inputRPMNeedle, inputFuelNeedle, inputCoolantTempNeedle) {
+function setUpGauges(inputSpeedNeedle, inputRPMNeedle, inputFuelNeedle, inputCoolantTempNeedle, inputIntakeTempNeedle) {
     vehicleSpeedGaugeNeedle = inputSpeedNeedle;
     vehicleRPMGaugeNeedle = inputRPMNeedle;
     fuelLevelGaugeNeedle = inputFuelNeedle;
     coolantTempGaugeNeedle = inputCoolantTempNeedle;
+    intakeTempGaugeNeedle = inputIntakeTempNeedle;
 }
 
 function calculateFuelLevel(fuel) {
@@ -53,10 +59,10 @@ function scaleValue(value, min, middle, max) {
     }
 }
 
-function calculateCoolantTemp(coolantTemp){
-    var coolTempC = coolantTemp -= 40;
+function calculateTemp(inputTemp){
+    var inputTempC = inputTemp -= 40;
 
-    var coolTempF = Math.round(coolTempC * 1.8 + 32);
+    var inputTempF = Math.round(inputTempC * 1.8 + 32);
 
-    return coolTempF;
+    return inputTempF;
 }

@@ -170,6 +170,30 @@
   top: 250px;
 }
 
+[app="app.cannonball"] #engineIntakeGaugeFill {
+  top: 270px;
+  left: 280px;
+}
+
+[app="app.cannonball"] #engineIntakeGaugeFillRed {
+  top: 270px;
+  left: 280px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 240px, 120px, 215px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineIntakeGaugeFillBlue {
+  top: 270px;
+  left: 280px;
+  /* This clip will show just the last bit of the arc */
+  clip: rect(0, 25px, 120px, 0px);  /* Adjusted these values to create a smaller arc segment */
+}
+
+[app="app.cannonball"] #engineIntakeGaugeNeedle {
+  top: 260px;
+  left: 395px;
+}
+
 [app="app.cannonball"] #engineIntakeLabel {
   position: absolute;
   top: 430px;

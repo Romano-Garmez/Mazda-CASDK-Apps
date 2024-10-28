@@ -236,7 +236,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.engineRPMLabel.html("RPM");
 
         this.engineCoolantGauge = $("<div id=\"engineCoolantGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
-        this.engineCoolantGaugeeFill = $("<div id=\"engineCoolantGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.engineCoolantGaugeFill = $("<div id=\"engineCoolantGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
         this.engineCoolantGaugeFillRed = $("<div id=\"engineCoolantGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
         this.engineCoolantGaugeFillBlue = $("<div id=\"engineCoolantGaugeFillBlue\" class=\"gaugeFillBlue\"/>").appendTo(this.pageTwo);
         this.engineCoolantGaugeNeedle = $("<div id=\"engineCoolantGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
@@ -244,6 +244,10 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.engineCoolantLabel.html("Coolant Temp");
 
         this.engineIntakeGauge = $("<div id=\"engineIntakeGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGaugeFill = $("<div id=\"engineIntakeGaugeFill\" class=\"gaugeFill\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGaugeFillRed = $("<div id=\"engineIntakeGaugeFillRed\" class=\"gaugeFillRed\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGaugeFillBlue = $("<div id=\"engineIntakeGaugeFillBlue\" class=\"gaugeFillBlue\"/>").appendTo(this.pageTwo);
+        this.engineIntakeGaugeNeedle = $("<div id=\"engineIntakeGaugeNeedle\" class=\"gaugeNeedle\"/>").appendTo(this.pageTwo);
         this.engineIntakeLabel = $("<span id=\"engineIntakeLabel\"/>").appendTo(this.pageTwo);
         this.engineIntakeLabel.html("Intake Temp");
 
@@ -259,7 +263,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         this.fuelLevelLabel = $("<span id=\"fuelLevelLabel\"/>").appendTo(this.pageTwo);
         this.fuelLevelLabel.html("Fuel");
 
-        setUpGauges(this.vehicleSpeedGaugeNeedle, this.engineRPMGaugeNeedle, this.fuelLevelGaugeNeedle, this.engineCoolantGaugeNeedle);
+        setUpGauges(this.vehicleSpeedGaugeNeedle, this.engineRPMGaugeNeedle, this.fuelLevelGaugeNeedle, this.engineCoolantGaugeNeedle, this.engineIntakeGaugeNeedle);
 
         // now let's get our data in place
 
@@ -477,15 +481,13 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         //update average speed on display
         setCurrentSpeed(speed);
 
-        var inTemp = this.sections[2].value * 1.8 + 32;
+        this.engineIntakeGauge.html(calculateTemp(this.sections[2].value));
 
-        this.engineIntakeGauge.html(inTemp);
-
-        this.engineCoolantGauge.html(calculateCoolantTemp(this.sections[3].value));
+        this.engineCoolantGauge.html(calculateTemp(this.sections[3].value));
 
         this.fuelLevelGauge.html(calculateFuelLevel(this.sections[4].value));
 
-        updateGauges(speed, this.sections[1].value, this.sections[4].value, this.sections[3].value);
+        updateGauges(speed, this.sections[1].value, this.sections[4].value, this.sections[3].value, this.sections[2].value);
     },
 
     /**
