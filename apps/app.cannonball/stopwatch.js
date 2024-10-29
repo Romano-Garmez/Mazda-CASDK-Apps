@@ -1,11 +1,11 @@
-startTime = -1;
-endTime = -1;
-timeOfReset = 0;
-resetTime = -1;
-resetEndTime = -1;
-swhtmlElement = null;
-swhtmlElement2 = null;
-swinterval = null;
+var startTime = -1;
+var endTime = -1;
+var timeOfReset = 0;
+var resetTime = -1;
+var resetEndTime = -1;
+var swhtmlElement = null;
+var swhtmlElement2 = null;
+var swinterval = null;
 
 /* setUpStopwatch
     * Set up the stopwatch with an HTML element

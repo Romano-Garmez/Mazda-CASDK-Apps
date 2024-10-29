@@ -1,9 +1,9 @@
-avgSpeed = -1;
-totalSpeed = 0;
-numOfSpeedData = 0;
-currentSpeed = -1;
-htmlElement = null;
-interval = null;
+var avgSpeed = -1;
+var totalSpeed = 0;
+var numOfSpeedData = 0;
+var currentSpeed = -1;
+var htmlElement = null;
+var interval = null;
 
 /* updateAverageSpeed
  * Update the average speed with the current speed on HTML element
