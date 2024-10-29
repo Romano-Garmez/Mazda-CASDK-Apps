@@ -181,44 +181,36 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         // let's build our interface
 
+        // PAGE 1
         this.pageOne = $("<div id=\"pageOne\"/>").appendTo(this.canvas);
 
         // 1) create a value label that shows the current value of the selected section
-
         this.speedBox = $("<div id=\"speedBox\" class=\"box\"/>").appendTo(this.pageOne);
-
         // 2) create a name label that shows the name of the selected section
         this.speedLabel = $("<span id=\"speedLabel\"/>").appendTo(this.pageOne);
 
         this.timingLabel = $("<div id=\"timingbox\" class=\"box\"/>").appendTo(this.pageOne);
+        this.timingLabel.html("00:00:00");
 
         this.rpmBox = $("<div id=\"RPMbox\" class=\"box\"/>").appendTo(this.pageOne);
         this.rpmLabel = $("<span id=\"RPMLabel\"/>").appendTo(this.pageOne);
+        this.rpmBox.html("0");
+        this.rpmLabel.html("RPM");
 
         this.avgSpeedBox = $("<div id=\"AVGSpeedbox\" class=\"box\"/>").appendTo(this.pageOne);
-
         this.avgSpeedLabel = $("<span id=\"AVGSpeedLabel\"/>").appendTo(this.pageOne);
+        this.avgSpeedBox.html("0");
+        this.avgSpeedLabel.html("AVG MPH");
 
         this.messageBox = $("<div id=\"messageBox\"/>").appendTo(this.pageOne);
+        this.messageBox.html("Press Dial");
 
         this.resetButton = $("<button id=\"resetButton\">reset</button>").appendTo(this.pageOne);
 
         this.playPauseButton = $("<button id=\"playPauseButton\"></button>").appendTo(this.pageOne);
-
-        this.timingLabel.html("00:00:00");
-
-        this.rpmBox.html("0");
-
-        this.rpmLabel.html("RPM");
-
-        this.avgSpeedBox.html("0");
-
-        this.avgSpeedLabel.html("AVG MPH");
-
-        this.messageBox.html("Press Dial");
-
         this.playPauseButton.html("play");
 
+        // PAGE 2
         this.pageTwo = $("<div id=\"pageTwo\"/>").appendTo(this.canvas);
 
         this.vehicleSpeedGauge = $("<div id=\"vehicleSpeedGauge\" class=\"gauge\"/>").appendTo(this.pageTwo);
@@ -415,8 +407,11 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
             // Vehicle RPM
             { field: VehicleData.vehicle.rpm, name: 'RPM' },
+            // Engine Intake Temp
             { field: VehicleData.temperature.intake, name: 'INTAKETEMP' },
+            // Engine Coolant Temp
             { field: VehicleData.temperature.coolant, name: 'COOLANTTEMP' },
+            // Fuel Level
             { field: VehicleData.fuel.position, name: 'FUELLEVEL' },
         ];
 
@@ -431,11 +426,6 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
             }.bind(this));
 
         }.bind(this));
-
-
-
-
-
     },
 
     /**
@@ -452,6 +442,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         // let's store the current section in a local variable
         var carSpeed = this.sections[0];
+        var speed;
 
         //convert speed to MPH/KMH as needed
 
@@ -466,25 +457,23 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
 
         //update speed on display
         this.speedBox.html(speed);
+        //gauge
         this.vehicleSpeedGauge.html(speed);
-
-
-
         // update name on display
         this.speedLabel.html(this.regions[this.getRegion()].unit);
         this.vehicleSpeedLabel.html("Speed (" + this.regions[this.getRegion()].unit + ")");
 
         //update RPM label on display
         this.rpmBox.html(this.sections[1].value);
+        //gauge
         this.engineRPMGauge.html(this.sections[1].value);
 
         //update average speed on display
         setCurrentSpeed(speed);
 
+        //gauges
         this.engineIntakeGauge.html(calculateTemp(this.sections[2].value));
-
         this.engineCoolantGauge.html(calculateTemp(this.sections[3].value));
-
         this.fuelLevelGauge.html(calculateFuelLevel(this.sections[4].value));
 
         updateGauges(speed, this.sections[1].value, this.sections[4].value, this.sections[3].value, this.sections[2].value);
@@ -536,7 +525,7 @@ CustomApplicationsHandler.register("app.cannonball", new CustomApplication({
         }
     },
 
-
+    //handle switching between pages using the controls in the car
     showPage: function (currentPageIndex) {
         if (currentPageIndex == 0) {
             this.pageOne.show();
