@@ -16,6 +16,11 @@ Includes:
 
 ---
 
+## Want to run your apps in an updated and upgraded Mazda Infotainment Simulator?
+Check out my repo where I've [updated flyandi's Mazda Infotainment Simulator](https://github.com/Romano-Garmez/mazda-custom-application-sdk-simulator), fixed some broken features, added new ones, and fully implemented a previously incomplete showcase mode here: [https://github.com/Romano-Garmez/mazda-custom-application-sdk-simulator](https://github.com/Romano-Garmez/mazda-custom-application-sdk-simulator)
+ 
+---
+
 ## Unfortunately this will likely be the end of me working on this project. Another driver wrecked my car, and insurance deemed it totalled. I'd be happy to answer any questions about hacking the Mazda Connect system or writing CASDK apps.
 
 ---
